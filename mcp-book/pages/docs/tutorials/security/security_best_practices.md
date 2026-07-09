@@ -3,18 +3,24 @@ type: Web Page
 title: Security Best Practices - Model Context Protocol
 description: Security considerations, attack vectors, and best practices for MCP implementations
 resource: https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices
-timestamp: '2026-07-07T10:31:48.208319+00:00'
+timestamp: '2026-07-09T12:16:39.468634+00:00'
 ---
 
 ## Introduction
 
 ### Purpose and Scope
 
-This document provides security considerations for the Model Context Protocol (MCP), complementing the MCP Authorization specification. This document identifies security risks, attack vectors, and best practices specific to MCP implementations. The primary audience for this document includes developers implementing MCP authorization flows, MCP server operators, and security professionals evaluating MCP-based systems. This document should be read alongside the MCP Authorization specification and OAuth 2.0 security best practices.## Attacks and Mitigations
+This document provides security considerations for the Model Context Protocol (MCP), complementing the[MCP Authorization](/specification/latest/basic/authorization)specification. This document identifies security risks, attack vectors, and best practices specific to MCP implementations. The primary audience for this document includes developers implementing MCP authorization flows, MCP server operators, and security professionals evaluating MCP-based systems. This document should be read alongside the MCP Authorization specification and
+
+[OAuth 2.0 security best practices](https://datatracker.ietf.org/doc/html/rfc9700).
+
+## Attacks and Mitigations
 
 This section gives a detailed description of attacks on MCP implementations, along with potential countermeasures.### Confused Deputy Problem
 
-Attackers can exploit MCP proxy servers that connect to third-party APIs, creating “confused deputy” vulnerabilities. This attack allows malicious clients to obtain authorization codes without proper user consent by exploiting the combination of static client IDs, dynamic client registration, and consent cookies.#### Terminology
+Attackers can exploit MCP proxy servers that connect to third-party APIs, creating “[confused deputy](https://en.wikipedia.org/wiki/Confused_deputy_problem)” vulnerabilities. This attack allows malicious clients to obtain authorization codes without proper user consent by exploiting the combination of static client IDs, dynamic client registration, and consent cookies.
+
+#### Terminology
 
 **MCP Proxy Server**: An MCP server that connects MCP clients to third-party APIs, offering MCP features while delegating operations and acting as a single OAuth client to the third-party API server.
 
@@ -45,7 +51,7 @@ When an MCP proxy server uses a static client ID to authenticate with a third-pa
 - When the user clicks the link, their browser still has the consent cookie from the previous legitimate request
 - The third-party authorization server detects the cookie and skips the consent screen
 - The MCP authorization code is redirected to the attacker’s server
-(specified in the malicious `redirect_uri`parameter during dynamic client registration)
+(specified in the malicious `redirect_uri`parameter during[dynamic client registration](/specification/latest/basic/authorization#dynamic-client-registration))
 - The attacker exchanges the stolen authorization code for access tokens for the MCP server without the user’s explicit approval
 - The attacker now has access to the third-party API as the compromised user
 
@@ -119,7 +125,9 @@ MCP proxy servers implementing OAuth flows **MUST**:
 
 #### Risks
 
-Token passthrough is explicitly forbidden in the authorization specification as it introduces a number of security risks, that include:- **Security Control Circumvention**- The MCP Server or downstream APIs might implement important security controls like rate limiting, request validation, or traffic monitoring, that depend on the token audience or other credential constraints. If clients can obtain and use tokens directly with the downstream APIs without the MCP server validating them properly or ensuring that the tokens are issued for the right service, they bypass these controls.
+Token passthrough is explicitly forbidden in the[authorization specification](/specification/latest/basic/authorization)as it introduces a number of security risks, that include:
+
+- **Security Control Circumvention**- The MCP Server or downstream APIs might implement important security controls like rate limiting, request validation, or traffic monitoring, that depend on the token audience or other credential constraints. If clients can obtain and use tokens directly with the downstream APIs without the MCP server validating them properly or ensuring that the tokens are issued for the right service, they bypass these controls.
  
 - **Accountability and Audit Trail Issues**- The MCP Server will be unable to identify or distinguish between MCP Clients when clients are calling with an upstream-issued access token which may be opaque to the MCP Server.
 - The downstream Resource Server’s logs may show requests that appear to come from a different source with a different identity, rather than the MCP server that is actually forwarding the tokens.
@@ -167,12 +175,15 @@ MCP clients deployed to a server**MUST**consider SSRF risks and implement approp
 **SHOULD**require HTTPS for all OAuth-related URLs in production environments:
 
 - Reject `http://`URLs except for loopback addresses (`localhost`,`127.0.0.1`,`::1`) during development
-- This aligns with OAuth 2.1 Section 1.5 which requires HTTPS for all OAuth protocol URLs except loopback redirect URIs
+- This aligns with
+[OAuth 2.1 Section 1.5](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-13#section-1.5)which requires HTTPS for all OAuth protocol URLs except loopback redirect URIs
 - Provide an explicit opt-out mechanism for development/testing scenarios
 
 **Block Private IP Ranges**MCP clients
 
-**SHOULD**block requests to private and reserved IP address ranges as recommended by RFC 9728 Section 7.7:
+**SHOULD**block requests to private and reserved IP address ranges as recommended by
+
+[RFC 9728 Section 7.7](https://datatracker.ietf.org/doc/html/rfc9728#section-7.7):
 
 - Private IPv4 ranges: `10.0.0.0/8`,`172.16.0.0/12`,`192.168.0.0/16`
 - Loopback: `127.0.0.0/8`,`::1`(except when explicitly allowed for development)
@@ -195,7 +206,8 @@ Avoid implementing IP validation manually. Attackers exploit encoding tricks
 **SHOULD**consider using an egress proxy that enforces network policies:
 
 - Route OAuth discovery requests through a proxy that blocks internal destinations
-- Use tools like Smokescreen or similar egress proxies that prevent SSRF by design
+- Use tools like
+[Smokescreen](https://github.com/stripe/smokescreen)or similar egress proxies that prevent SSRF by design
 - Configure network policies to restrict the MCP client’s outbound access
 
 **DNS Resolution Considerations**Be aware of Time-of-Check to Time-of-Use (TOCTOU) issues with DNS-based validation:
@@ -208,8 +220,8 @@ Avoid implementing IP validation manually. Attackers exploit encoding tricks
 
 The following resources can help developers implement SSRF protections in MCP clients.**Reference Documentation**
 
-- OWASP SSRF Prevention Cheat Sheet: Comprehensive guidance on SSRF prevention techniques, including input validation, allowlist strategies, and network-level controls
-- OWASP Top 10 A10:2021 - SSRF: SSRF in the context of the most critical web application security risks
+- [OWASP SSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html): Comprehensive guidance on SSRF prevention techniques, including input validation, allowlist strategies, and network-level controls
+- [OWASP Top 10 A10:2021 - SSRF](https://owasp.org/Top10/2021/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/): SSRF in the context of the most critical web application security risks
 
 ### Session Hijacking
 
@@ -225,11 +237,13 @@ When you have multiple stateful HTTP servers that handle MCP requests, the follo
 The client connects to **Server A**and receives a session ID.
 - 
 The attacker obtains an existing session ID and sends a malicious
-event to **Server B**with said session ID.- When a server supports redelivery/resumable streams, deliberately terminating the request before receiving the response could lead to it being resumed by the original client via the GET request for server sent events.
+event to **Server B**with said session ID.- When a server supports
+[redelivery/resumable streams](/specification/latest/basic/transports#resumability-and-redelivery), deliberately terminating the request before receiving the response could lead to it being resumed by the original client via the GET request for server sent events.
 - If a particular server initiates server sent events as a
 consequence of a tool call such as a
 `notifications/tools/list_changed`, where it is possible to affect the tools that are offered by the server, a client could end up with tools that they were not aware were enabled.
  
+- When a server supports
 - 
 **Server B**enqueues the event (associated with session ID) into a shared queue.
 - 
@@ -332,8 +346,8 @@ During the OAuth authorization flow, MCP servers provide authorization URLs that
 
 `stdio` transport capabilities,
 attackers can escalate web-based attacks to full system compromise. See
-stdio Transport Security in Proxy Scenarios
-for detailed attack vectors and mitigations.
+[stdio Transport Security in Proxy Scenarios](#stdio-transport-security-in-proxy-scenarios)for detailed attack vectors and mitigations.
+
 #### Risks
 
 OAuth authorization URL vulnerabilities introduce several critical security risks:- **Cross-Site Scripting (XSS)**. Malicious JavaScript execution can lead to session hijacking, credential theft, and unauthorized actions within the client application.
@@ -399,7 +413,7 @@ In proxy-based MCP implementations, a local proxy service sits between the clien
 
 #### Mitigation
 
-The primary defense is to prevent classes of vulnerabilities that enable this attack vector:- Implement the mitigations described in OAuth Authorization URL Validation
+The primary defense is to prevent classes of vulnerabilities that enable this attack vector:- Implement the mitigations described in [OAuth Authorization URL Validation](#oauth-authorization-url-validation)
 - Use Content Security Policy (CSP) to prevent JavaScript execution from untrusted sources
 - Validate and sanitize all input from MCP servers before processing
 

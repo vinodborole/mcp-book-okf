@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-  "updated_at": "2026-07-07T10:31:48.217336+00:00",
+  "updated_at": "2026-07-09T12:16:39.488861+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -16,55 +16,55 @@
       "path": "pages/docs/develop/build-client.md",
       "url": "https://modelcontextprotocol.io/docs/develop/build-client",
       "title": "Build an MCP client - Model Context Protocol",
-      "hash": "a14f82737c9e15e53467875c83382b12c17ea518e0fcbda96b7b44ef8647fd3d"
+      "hash": "0b1bcc9974bc7ee2d8fe4dfe24edb27921314bae1b4d6f393a58bdbac168722e"
     },
     {
       "path": "pages/docs/develop/build-server.md",
       "url": "https://modelcontextprotocol.io/docs/develop/build-server",
       "title": "Build an MCP server - Model Context Protocol",
-      "hash": "23cfcd93f386e3d90db8a5c7409ddfbffb47ec976477af7d0384205087095238"
+      "hash": "4f872602d6eb230e9b4bb06749e8516b8cd7c8f68fca0c158914577c374ee548"
     },
     {
       "path": "pages/docs/develop/build-with-agent-skills.md",
       "url": "https://modelcontextprotocol.io/docs/develop/build-with-agent-skills",
       "title": "Build with Agent Skills - Model Context Protocol",
-      "hash": "29c9d2331adeaf52ed1aba1ede226b72f11041498ccb83b83fb084bf29847051"
+      "hash": "d78675bf79ce50607673ca06e6741379b24c795d5bf57c262c1d3ed11a3635c9"
     },
     {
       "path": "pages/docs/develop/clients/client-best-practices.md",
       "url": "https://modelcontextprotocol.io/docs/develop/clients/client-best-practices",
       "title": "Client Best Practices - Model Context Protocol",
-      "hash": "b6b20c2f909a8656c23a20afd32c695b2830ee577339490bf7488804619116ff"
+      "hash": "53d49351a453e3bde82d7a758ab54e317c3f4407ac45dbae7e688827352def4a"
     },
     {
       "path": "pages/docs/develop/connect-local-servers.md",
       "url": "https://modelcontextprotocol.io/docs/develop/connect-local-servers",
       "title": "Connect to local MCP servers - Model Context Protocol",
-      "hash": "cbc6e230e61ce8f5331ae08e2c5f5a3686f4a8760c597219ca7a7f1805d0e65c"
+      "hash": "c507cda9d6e0ff120b199631345c58f8961e425ab8e3dd20855315f876de5c9c"
     },
     {
       "path": "pages/docs/develop/connect-remote-servers.md",
       "url": "https://modelcontextprotocol.io/docs/develop/connect-remote-servers",
       "title": "Connect to remote MCP Servers - Model Context Protocol",
-      "hash": "ef651308ae70fdf936bc6c48b099973ff01c2c26647e99d0eed81b6297f62c65"
+      "hash": "24ead0f97c2e6a63cef541626fd4cba5fb6b737c93c136cb887b05255313e6f0"
     },
     {
       "path": "pages/docs/getting-started/intro.md",
       "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
       "title": "What is the Model Context Protocol (MCP)? - Model Context Protocol",
-      "hash": "6d91f0963df6bc9236263d47c7f9ba4adae8d80214229eac42f131effea845dc"
+      "hash": "80cacad83e30caf2025b074870ac41900643665c155abe7dc3f6c3f6aa503674"
     },
     {
       "path": "pages/docs/learn/architecture.md",
       "url": "https://modelcontextprotocol.io/docs/learn/architecture",
       "title": "Architecture overview - Model Context Protocol",
-      "hash": "6d9cfa9abe2a19b70827587c2a0920665c6b8a0bf33922c0a6cf240c27b69072"
+      "hash": "5732de0e856fc1d417feff24be1323725a36d52ed1376e314e271e888af2c076"
     },
     {
       "path": "pages/docs/learn/client-concepts.md",
       "url": "https://modelcontextprotocol.io/docs/learn/client-concepts",
       "title": "Understanding MCP clients - Model Context Protocol",
-      "hash": "6a2b6157b7159ea7aa2f13565855125f3bde67032482fd36eea84da82fb1bd05"
+      "hash": "0228d18660a32bac590840b2c0754d697e37e8b5a81934b4fb127ae768f2a4e6"
     },
     {
       "path": "pages/docs/learn/server-concepts.md",
@@ -76,37 +76,37 @@
       "path": "pages/docs/learn/versioning.md",
       "url": "https://modelcontextprotocol.io/docs/learn/versioning",
       "title": "Versioning - Model Context Protocol",
-      "hash": "de23dc2937883952310ce5534d9cb299c843567e1153ffdae31fb68ce376646f"
+      "hash": "ff37e290627510dbd323abcbc7e7fb62ce930c14f1ce02f89be14a121e6edfd5"
     },
     {
       "path": "pages/docs/sdk.md",
       "url": "https://modelcontextprotocol.io/docs/sdk",
       "title": "SDKs - Model Context Protocol",
-      "hash": "5daf8459761f14d482326a1e48427a3caa4bcbd81fd46d1e6ad4c60c35361686"
+      "hash": "011013b8b9afc08e1ec559af7036ac1d763bbe0e8b88181946dbf820d22a2114"
     },
     {
       "path": "pages/docs/tools/debugging.md",
       "url": "https://modelcontextprotocol.io/docs/tools/debugging",
       "title": "Debugging - Model Context Protocol",
-      "hash": "6743be96aac2d403d1031d7cae982a838e8a91eb3d159879af124cf8f868999c"
+      "hash": "bfa50f4805a33751737ffc94c844a6b680bdc6092afc6c336c8216d62d0cb9b5"
     },
     {
       "path": "pages/docs/tools/inspector.md",
       "url": "https://modelcontextprotocol.io/docs/tools/inspector",
       "title": "MCP Inspector - Model Context Protocol",
-      "hash": "3a32428fea6cafc3d25798ca5b5fc0e60c336c28637ee32ec0599da630ffffbb"
+      "hash": "636ee813b30ccaa70600130542f259616a5cf3bf6af7fbb3f6b5c546527b2a2a"
     },
     {
       "path": "pages/docs/tutorials/security/authorization.md",
       "url": "https://modelcontextprotocol.io/docs/tutorials/security/authorization",
       "title": "Understanding Authorization in MCP - Model Context Protocol",
-      "hash": "9aed598e32865929f772f5307e5df5ea4cdea17e8b9513e4138314140511a766"
+      "hash": "4640265c96f54c31b27da93c7337733ddd763e6c570f98ead21a175fe0811bce"
     },
     {
       "path": "pages/docs/tutorials/security/security_best_practices.md",
       "url": "https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices",
       "title": "Security Best Practices - Model Context Protocol",
-      "hash": "6f81ade51cf1d1733556d36f98cf95a15b11adb4733995582193bcae666f9823"
+      "hash": "e1b61123e459befa2e581b011530148857dcccf96e02e123f2bd40bc89f99466"
     }
   ],
   "edges": [
@@ -262,5 +262,12 @@
       "pages/docs/tutorials/security/security_best_practices.md",
       "pages/docs/tutorials/security/authorization.md"
     ]
-  ]
+  ],
+  "last_sync": {
+    "synced_at": "2026-07-09T12:16:39.478594+00:00",
+    "added": 0,
+    "changed": 15,
+    "removed": 0,
+    "pages": 16
+  }
 }

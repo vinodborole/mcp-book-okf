@@ -4,16 +4,20 @@ title: Connect to local MCP servers - Model Context Protocol
 description: Learn how to extend Claude Desktop with local MCP servers to enable file
   system access and other powerful integrations
 resource: https://modelcontextprotocol.io/docs/develop/connect-local-servers
-timestamp: '2026-07-07T10:31:48.208319+00:00'
+timestamp: '2026-07-09T12:16:39.468634+00:00'
 ---
 
 ## Prerequisites
 
 Before starting this tutorial, ensure you have the following installed on your system:### Claude Desktop
 
-Download and install Claude Desktop for your operating system. Claude Desktop is available for macOS and Windows. If you already have Claude Desktop installed, verify you’re running the latest version by clicking the Claude menu and selecting “Check for Updates…”### Node.js
+Download and install[Claude Desktop](https://claude.ai/download)for your operating system. Claude Desktop is available for macOS and Windows. If you already have Claude Desktop installed, verify you’re running the latest version by clicking the Claude menu and selecting “Check for Updates…”
 
-The Filesystem Server and many other MCP servers require Node.js to run. Verify your Node.js installation by opening a terminal or command prompt and running:## Understanding MCP Servers
+### Node.js
+
+The Filesystem Server and many other MCP servers require Node.js to run. Verify your Node.js installation by opening a terminal or command prompt and running:[nodejs.org](https://nodejs.org/). We recommend the LTS (Long Term Support) version for stability.
+
+## Understanding MCP Servers
 
 MCP servers are programs that run on your computer and provide specific capabilities to Claude Desktop through a standardized protocol. Each server exposes tools that Claude can use to perform actions, with your approval. The Filesystem Server we’ll install provides tools for:- Reading file contents and directory structures
 - Creating new files and directories
@@ -39,9 +43,9 @@ Replace the contents of the configuration file with the following JSON structure
 
 `username` with your actual computer username. The paths listed in the `args` array specify which directories the Filesystem Server can access. You can modify these paths or add additional directories as needed.Restart Claude Desktop
 
-After saving the configuration file, completely quit Claude Desktop and restart it. The application needs to restart to load the new configuration and start the MCP server.Upon successful restart, you’ll see an MCP server indicator  in the bottom-right corner of the conversation input box:Click on this indicator to view the available tools provided by the Filesystem Server:If the server indicator doesn’t appear, refer to the Troubleshooting section for debugging steps.
+After saving the configuration file, completely quit Claude Desktop and restart it. The application needs to restart to load the new configuration and start the MCP server.Upon successful restart, you’ll see an MCP server indicator  in the bottom-right corner of the conversation input box:Click on this indicator to view the available tools provided by the Filesystem Server:If the server indicator doesn’t appear, refer to the 
 
-## Using the Filesystem Server
+[Troubleshooting](#troubleshooting)section for debugging steps.## Using the Filesystem Server
 
 With the Filesystem Server connected, Claude can now interact with your file system. Try these example requests to explore the capabilities:### File Management Examples
 
@@ -60,7 +64,7 @@ Server not showing up in Claude / hammer icon missing
 - Restart Claude Desktop completely
 - Check your `claude_desktop_config.json`file syntax
 - Make sure the file paths included in `claude_desktop_config.json`are valid and that they are absolute and not relative
-- Look at logs to see why the server is not connecting
+- Look at [logs](#getting-logs-from-claude-for-desktop)to see why the server is not connecting
 - In your command line, try manually running the server (replacing `username`as you did in`claude_desktop_config.json`) to see if you get any errors:
 
 Getting logs from Claude Desktop
@@ -92,9 +96,9 @@ None of this is working. What do I do?
 
 None of this is working. What do I do?
 
-Please refer to our debugging guide for better debugging tools and more detailed guidance.
+Please refer to our 
 
-ENOENT error and `${APPDATA}` in paths on Windows
+[debugging guide](/docs/tools/debugging)for better debugging tools and more detailed guidance.ENOENT error and `${APPDATA}` in paths on Windows
 
 ENOENT error and `${APPDATA}` in paths on Windows
 

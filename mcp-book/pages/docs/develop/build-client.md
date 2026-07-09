@@ -4,8 +4,10 @@ title: Build an MCP client - Model Context Protocol
 description: Get started building your own client that can integrate with all MCP
   servers.
 resource: https://modelcontextprotocol.io/docs/develop/build-client
-timestamp: '2026-07-07T10:31:48.208319+00:00'
+timestamp: '2026-07-09T12:16:39.468634+00:00'
 ---
+
+[Build an MCP Server](/docs/develop/build-server)tutorial so you can understand how clients and servers communicate.
 
 - Python
 - TypeScript
@@ -15,7 +17,7 @@ timestamp: '2026-07-07T10:31:48.208319+00:00'
 - Ruby
 - Rust
 
-You can find the complete code for this tutorial here.Add You can find the complete The client will:
+[You can find the complete code for this tutorial here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/mcp-client-python)
 
 ## System Requirements
 
@@ -40,9 +42,26 @@ rm main.py
 # Create our main file
 touch client.py
 ```
+```
+# Create project directory
+uv init mcp-client
+cd mcp-client
+# Create virtual environment
+uv venv
+# Activate virtual environment
+.venv\Scripts\activate
+# Install required packages
+uv add mcp anthropic python-dotenv
+# Remove boilerplate files
+del main.py
+# Create our main file
+new-item client.py
+```
 ## Setting Up Your API Key
 
-You’ll need an Anthropic API key from the Anthropic Console.Create a`.env` file to store it:```
+You’ll need an Anthropic API key from the[Anthropic Console](https://console.anthropic.com/settings/keys).Create a
+
+`.env` file to store it:```
 echo "ANTHROPIC_API_KEY=your-api-key-goes-here" > .env
 ```
 `.env` to your `.gitignore`:```
@@ -197,7 +216,9 @@ if __name__ == "__main__":
     import sys
     asyncio.run(main())
 ```
-`client.py` file here.## Key Components Explained
+`client.py` file [here](https://github.com/modelcontextprotocol/quickstart-resources/blob/main/mcp-client-python/client.py).
+
+## Key Components Explained
 
 ### 1. Client Initialization
 
@@ -257,9 +278,9 @@ To run your client with any MCP server:```
 uv run client.py path/to/server.py # python server
 uv run client.py path/to/build/index.js # node server
 ```
-If you’re continuing the weather tutorial from the server quickstart, your command might look something like this: 
+If you’re continuing 
 
-`python client.py .../quickstart-resources/weather-server-python/weather.py`- Connect to the specified server
+[the weather tutorial from the server quickstart](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-python), your command might look something like this:`python client.py .../quickstart-resources/weather-server-python/weather.py`- Connect to the specified server
 - List available tools
 - Start an interactive chat session where you can:
 - Enter queries
@@ -297,9 +318,10 @@ When you submit a query:- The client gets the list of available tools from the s
  
 - Store API keys securely in 
 - 
-**Tool Names**- Tool names can be validated according to the format specified here
+**Tool Names**- Tool names can be validated according to the format specified [here](/specification/draft/server/tools#tool-names)
 - If a tool name conforms to the specified format, it should not fail validation by an MCP client
  
+- Tool names can be validated according to the format specified 
 
 ## Troubleshooting
 
@@ -337,7 +359,7 @@ If you see:- `FileNotFoundError`: Check your server path
 - `Tool execution failed`: Verify the tool’s required environment variables are set
 - `Timeout error`: Consider increasing the timeout in your client configuration
 
-You can find the complete code for this tutorial here.Update your Create a Add 
+[You can find the complete code for this tutorial here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/mcp-client-typescript)
 
 ## System Requirements
 
@@ -360,6 +382,19 @@ npm install @anthropic-ai/sdk @modelcontextprotocol/sdk dotenv
 npm install -D @types/node typescript
 # Create source file
 touch index.ts
+```
+```
+# Create project directory
+md mcp-client-typescript
+cd mcp-client-typescript
+# Initialize npm project
+npm init -y
+# Install dependencies
+npm install @anthropic-ai/sdk @modelcontextprotocol/sdk dotenv
+# Install dev dependencies
+npm install -D @types/node typescript
+# Create source file
+new-item index.ts
 ```
 `package.json` to set `type: "module"` and a build script:package.json
 
@@ -392,7 +427,9 @@ touch index.ts
 ```
 ## Setting Up Your API Key
 
-You’ll need an Anthropic API key from the Anthropic Console.Create a`.env` file to store it:```
+You’ll need an Anthropic API key from the[Anthropic Console](https://console.anthropic.com/settings/keys).Create a
+
+`.env` file to store it:```
 echo "ANTHROPIC_API_KEY=<your key here>" > .env
 ```
 `.env` to your `.gitignore`:```
@@ -577,9 +614,11 @@ npm run build
 node build/index.js path/to/server.py # python server
 node build/index.js path/to/build/index.js # node server
 ```
-If you’re continuing the weather tutorial from the server quickstart, your command might look something like this: 
+If you’re continuing 
 
-`node build/index.js .../quickstart-resources/weather-server-typescript/build/index.js`**The client will:**- Connect to the specified server
+[the weather tutorial from the server quickstart](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-typescript), your command might look something like this:`node build/index.js .../quickstart-resources/weather-server-typescript/build/index.js`**The client will:**
+
+- Connect to the specified server
 - List available tools
 - Start an interactive chat session where you can:
 - Enter queries
@@ -651,7 +690,11 @@ If you see:- `Error: Cannot find module`: Check your build folder and ensure Typ
 - `BadRequestError`: Ensure you have enough credits to access the Anthropic API
 
 This is a quickstart demo based on Spring AI MCP auto-configuration and boot starters.
-To learn how to create sync and async MCP Clients manually, consult the Java SDK Client documentation
+To learn how to create sync and async MCP Clients manually, consult the 
+
+[Java SDK Client](https://java.sdk.modelcontextprotocol.io/)documentation[Brave Search MCP Server](https://github.com/modelcontextprotocol/servers-archived/tree/main/src/brave-search). The application creates a conversational interface powered by Anthropic’s Claude AI model that can perform internet searches through Brave Search, enabling natural language interactions with real-time web data.
+
+[You can find the complete code for this tutorial here.](https://github.com/spring-projects/spring-ai-examples/tree/main/model-context-protocol/web-search/brave-chatbot)
 
 ## System Requirements
 
@@ -665,9 +708,7 @@ Before starting, ensure your system meets these requirements:- Java 17 or higher
 
 - 
 Install npx (Node Package eXecute):
-First, make sure to install npm
-and then run:
-`npm install -g npx`
+First, make sure to install [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)and then run:`npm install -g npx`
 - 
 Clone the repository:
 `git clone https://github.com/spring-projects/spring-ai-examples.git cd model-context-protocol/web-search/brave-chatbot`
@@ -777,9 +818,7 @@ The MCP client supports additional configuration options:- Client customization 
     <artifactId>spring-ai-mcp-client-webflux-spring-boot-starter</artifactId>
 </dependency>
 ```
-You can find the complete code for this tutorial here.Now, let’s create and set up your project:After running Verify that everything is set up correctly:
-
-Alternatively, you can run directly with Gradle:
+[You can find the complete code for this tutorial here.](https://github.com/modelcontextprotocol/kotlin-sdk/tree/main/samples/kotlin-mcp-client)
 
 ## System Requirements
 
@@ -789,8 +828,9 @@ Before starting, ensure your system meets these requirements:- JDK 11 or higher
 ## Setting up your environment
 
 First, let’s install`java` and `gradle` if you haven’t already.
-You can download `java` from official Oracle JDK website.
-Verify your `java` installation:```
+You can download `java` from [official Oracle JDK website](https://www.oracle.com/java/technologies/downloads/). Verify your
+
+`java` installation:```
 java --version
 ```
 ```
@@ -800,7 +840,20 @@ cd kotlin-mcp-client
 # Initialize a new kotlin project
 gradle init
 ```
-`gradle init`, select **Application**as the project type,**Kotlin**as the programming language.Alternatively, you can create a Kotlin application using the IntelliJ IDEA project wizard.After creating the project, replace the contents of your`build.gradle.kts` with:build.gradle.kts
+```
+# Create a new directory for our project
+md kotlin-mcp-client
+cd kotlin-mcp-client
+# Initialize a new kotlin project
+gradle init
+```
+`gradle init`, select **Application**as the project type,
+
+**Kotlin**as the programming language.Alternatively, you can create a Kotlin application using the
+
+[IntelliJ IDEA project wizard](https://kotlinlang.org/docs/jvm-get-started.html).After creating the project, replace the contents of your
+
+`build.gradle.kts` with:build.gradle.kts
 
 ```
 // Check latest versions at https://github.com/modelcontextprotocol/kotlin-sdk/releases
@@ -828,7 +881,9 @@ dependencies {
 ```
 ## Setting up your API key
 
-You’ll need an Anthropic API key from the Anthropic Console.Set up your API key:```
+You’ll need an Anthropic API key from the[Anthropic Console](https://console.anthropic.com/settings/keys).Set up your API key:
+
+```
 export ANTHROPIC_API_KEY='your-anthropic-api-key-here'
 ```
 Make sure you keep your 
@@ -1011,7 +1066,9 @@ java -jar build/libs/kotlin-mcp-client-0.1.0-all.jar path/to/build/index.js # No
 ```
 If you’re continuing the weather tutorial from the server quickstart, your command might look something like this: 
 
-`java -jar build/libs/kotlin-mcp-client-0.1.0-all.jar .../samples/weather-stdio-server/build/libs/weather-stdio-server-0.1.0-all.jar`**The client will:**- Connect to the specified server
+`java -jar build/libs/kotlin-mcp-client-0.1.0-all.jar .../samples/weather-stdio-server/build/libs/weather-stdio-server-0.1.0-all.jar`**The client will:**
+
+- Connect to the specified server
 - List available tools
 - Start an interactive chat session where you can:
 - Enter queries
@@ -1090,7 +1147,7 @@ If you see:- `Connection refused`: Ensure the server is running and the path is 
 - `Tool execution failed`: Verify the tool’s required environment variables are set
 - `ANTHROPIC_API_KEY is not set`: Check your environment variables
 
-You can find the complete code for this tutorial here.Then, add the required dependencies to your project:This creates the beginnings of a .NET console application that can read the API key from user secrets.Next, we’ll setup the MCP Client:Add this function at the end of the This creates an MCP client that will connect to a server that is provided as a command line argument. It then lists the available tools from the connected server.The client will:
+[You can find the complete code for this tutorial here.](https://github.com/modelcontextprotocol/csharp-sdk/tree/main/samples/QuickstartClient)
 
 ## System Requirements
 
@@ -1112,7 +1169,9 @@ dotnet add package Microsoft.Extensions.AI
 ```
 ## Setting up your API key
 
-You’ll need an Anthropic API key from the Anthropic Console.```
+You’ll need an Anthropic API key from the[Anthropic Console](https://console.anthropic.com/settings/keys).
+
+```
 dotnet user-secrets init
 dotnet user-secrets set "ANTHROPIC_API_KEY" "<your key here>"
 ```
@@ -1214,7 +1273,7 @@ static void PromptForInput()
 
 ### 3. Query Processing
 
-- Leverages Microsoft.Extensions.AI for the chat client.
+- Leverages [Microsoft.Extensions.AI](https://learn.microsoft.com/dotnet/ai/ai-extensions)for the chat client.
 - Configures the `IChatClient`to use automatic tool (function) invocation.
 - The client reads user input and sends it to the server.
 - The server processes the query and returns a response.
@@ -1238,12 +1297,12 @@ If you’re continuing the weather tutorial from the server quickstart, your com
  
 - Exit the session when done
 
-You can find the complete code for this tutorial here.Add You can find the complete The client will:
+[You can find the complete code for this tutorial here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/mcp-client-ruby)
 
 ## System Requirements
 
 Before starting, ensure your system meets these requirements:- Mac or Windows computer
-- Ruby 3.2.0 or higher installed (required by the Anthropic SDK)
+- Ruby 3.2.0 or higher installed (required by the [Anthropic SDK](https://github.com/anthropics/anthropic-sdk-ruby))
 - Anthropic API key (Claude)
 
 ## Setting Up Your Environment
@@ -1259,9 +1318,22 @@ bundle add anthropic base64 dotenv mcp
 # Create our main file
 touch client.rb
 ```
+```
+# Create project directory
+mkdir mcp-client
+cd mcp-client
+# Create a Gemfile
+bundle init
+# Add required dependencies
+bundle add anthropic base64 dotenv mcp
+# Create our main file
+new-item client.rb
+```
 ## Setting Up Your API Key
 
-You’ll need an Anthropic API key from the Anthropic Console.Create a`.env` file to store it:```
+You’ll need an Anthropic API key from the[Anthropic Console](https://console.anthropic.com/settings/keys).Create a
+
+`.env` file to store it:```
 echo "ANTHROPIC_API_KEY=your-api-key-goes-here" > .env
 ```
 `.env` to your `.gitignore`:```
@@ -1424,7 +1496,9 @@ ensure
   client.cleanup
 end
 ```
-`client.rb` file here.## Key Components Explained
+`client.rb` file [here](https://github.com/modelcontextprotocol/quickstart-resources/blob/main/mcp-client-ruby/client.rb).
+
+## Key Components Explained
 
 ### 1. Client Initialization
 
@@ -1469,9 +1543,9 @@ bundle exec ruby client.rb path/to/server.rb # ruby server
 bundle exec ruby client.rb path/to/server.py # python server
 bundle exec ruby client.rb path/to/build/index.js # node server
 ```
-If you’re continuing the weather tutorial from the server quickstart, your command might look something like this: 
+If you’re continuing 
 
-`bundle exec ruby client.rb /path/to/weather-server-ruby/weather.rb`- Connect to the specified server
+[the weather tutorial from the server quickstart](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-ruby), your command might look something like this:`bundle exec ruby client.rb /path/to/weather-server-ruby/weather.rb`- Connect to the specified server
 - List available tools
 - Start an interactive chat session where you can:
 - Enter queries
@@ -1509,9 +1583,10 @@ When you submit a query:- The client gets the list of available tools from the s
  
 - Store API keys securely in 
 - 
-**Tool Names**- Tool names can be validated according to the format specified here
+**Tool Names**- Tool names can be validated according to the format specified [here](/specification/draft/server/tools#tool-names)
 - If a tool name conforms to the specified format, it should not fail validation by an MCP client
  
+- Tool names can be validated according to the format specified 
 
 ## Troubleshooting
 
@@ -1549,11 +1624,11 @@ If you see:- `Errno::ENOENT`: Check your server path and ensure the command (- `
 - `Tool execution failed`: Verify the tool’s required environment variables are set
 - `Anthropic::Errors::AuthenticationError`: Check your- `.env`file has a valid- `ANTHROPIC_API_KEY`
 
-You can find the complete code for this tutorial here.Replace the contents of The Add The client keeps the model API client, the active MCP session, and the tools advertised by the connected server.This method:MCP and model APIs describe tools with similar information but different Rust types. This keeps model request handling in one place and adds useful context if the API request fails.The method first sends the user’s query and available tools to Claude. When Claude requests tools, the client executes each request through the MCP session, sends the results back to Claude, and collects the final text response.The loop accepts queries until the user types The entry point loads Running bare The client will:If a command cannot be found, use its absolute path or verify it is available in your 
+[You can find the complete code for this tutorial here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/mcp-client-rust)
 
 ## System Requirements
 
-Before starting, ensure your Linux system meets these requirements:- Latest stable version of Rust and Cargo
+Before starting, ensure your Linux system meets these requirements:- Latest stable version of [Rust and Cargo](https://www.rust-lang.org/tools/install)
 - Anthropic API key (Claude)
 - A Python, Node.js, or executable MCP server to connect to
 
@@ -1581,9 +1656,15 @@ serde_json = "1.0.128"
 dotenvy = "0.15.7"
 reqwest = "0.12.23"
 ```
-`rmcp` crate provides the Rust MCP SDK and child-process transport. This example uses the `genai` crate to send requests to Claude and represent tools in the model request.## Setting Up Your API Key
+[crate provides the Rust MCP SDK and child-process transport. This example uses the](https://github.com/modelcontextprotocol/rust-sdk)
 
-You’ll need an Anthropic API key from the Anthropic Console.Create a`.env` file to store it:```
+`rmcp`[crate to send requests to Claude and represent tools in the model request.](https://github.com/jeremychone/rust-genai)
+
+`genai`## Setting Up Your API Key
+
+You’ll need an Anthropic API key from the[Anthropic Console](https://console.anthropic.com/settings/keys).Create a
+
+`.env` file to store it:```
 echo "ANTHROPIC_API_KEY=your-api-key-goes-here" > .env
 ```
 `.env` to your `.gitignore`:```
@@ -1815,7 +1896,9 @@ async fn main() -> Result<()> {
 Before running the client, confirm the items in`src/main.rs` are placed at the correct scope:- `new`,- `connect_to_server`,- `process_query`,- `request_model`,- `chat_loop`, and- `cleanup`are methods inside the single- `impl MCPClient`block.
 - `main`and- `convert_tools`are functions outside the- `impl MCPClient`block.
 
-`src/main.rs` example, then check that it compiles:```
+[complete](https://github.com/modelcontextprotocol/quickstart-resources/blob/main/mcp-client-rust/src/main.rs), then check that it compiles:
+
+`src/main.rs` example```
 cargo fmt --check
 cargo check
 ```
@@ -1829,9 +1912,9 @@ cargo run -- node path/to/build/index.js
 # Executable server
 cargo run -- path/to/server-binary
 ```
-`cargo run` without a server command prints the usage message and exits.If you’re continuing the weather tutorial from the server quickstart, build the server first and then run a command similar to: 
+`cargo run` without a server command prints the usage message and exits.If you’re continuing 
 
-`cargo run -- ../weather-server-rust/target/debug/weather`- Start and connect to the specified MCP server
+[the weather tutorial from the server quickstart](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-rust), build the server first and then run a command similar to:`cargo run -- ../weather-server-rust/target/debug/weather`- Start and connect to the specified MCP server
 - List the tools available from that server
 - Start an interactive chat session where you can:
 - Enter queries

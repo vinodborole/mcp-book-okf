@@ -3,7 +3,7 @@ type: Web Page
 title: Client Best Practices - Model Context Protocol
 description: Patterns for scaling MCP host applications across many servers and tools.
 resource: https://modelcontextprotocol.io/docs/develop/clients/client-best-practices
-timestamp: '2026-07-07T10:31:48.208319+00:00'
+timestamp: '2026-07-09T12:16:39.468634+00:00'
 ---
 
 **progressive discovery**, which controls
@@ -33,6 +33,10 @@ Once the model invokes the`search_tools` tool, we need to choose a search strate
 - **Subagent-based**: A secondary model, often a small and fast model such as Claude Haiku or Gemini Flash, selects tools for the task. This usually works very well but can be more costly than embedding-based or keyword-based solutions.
 - **Hybrid**: Combine approaches. For example, by scoring across keyword and embedding rankings, or choosing different strategies depending on use-case or query.
 
+[OpenAI](https://developers.openai.com/api/docs/guides/tools-tool-search)and
+
+[Anthropic](https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool)support this natively; check your provider’s documentation for an equivalent. When available, you may prefer the platform’s tool search over a custom implementation. Build your own when the provider doesn’t offer one or when you need specialized retrieval logic (e.g., domain-specific ranking or access-control filtering). The three-layer pattern below illustrates a custom search-based approach in detail, but the layered principle (catalog, inspect, execute) applies regardless of retrieval mechanism.
+
 ### Using Progressive Discovery
 
 One common implementation for progressive discovery uses a search-based three-layer approach:**Layer 1: Catalog.**The host exposes a small set of meta-tools for searching available capabilities. A
@@ -47,6 +51,8 @@ One common implementation for progressive discovery uses a search-based three-la
 Progressive discovery extends beyond individual tools to entire servers. Rather than connecting to every configured server at startup, a host can:- Maintain a registry of available servers and their high-level descriptions.
 - Connect to a server only when the model determines it needs that server’s capabilities.
 - Disconnect servers that are no longer relevant to the current task, freeing context.
+
+[agent skills](/docs/develop/build-with-agent-skills), a skill file can declare which MCP servers it needs, and the host connects them only when that skill is invoked.
 
 ### Implementation Guidelines
 
@@ -76,7 +82,9 @@ With direct tool calling, every tool invocation is a round trip: the model gener
 The host converts MCP tool schemas into a typed API available inside a sandbox. When the model needs tools, it writes a script and executes it.**Step 1: Generate a programmatic API from MCP schemas.**The host reads each server’s tool definitions and produces typed functions based on each tool’s arguments and
 
 `outputSchema`:
-`outputSchema` for each tool. When an output schema is present, the host can produce precise return types (like `LogEntry` above).
+[for each tool. When an output schema is present, the host can produce precise return types (like](/specification/draft/server/tools#output-schema)
+
+`outputSchema``LogEntry` above).
 When an output schema is absent, prefer the simple path:
 - **Use a generic type and move on.**Accept- `any`or- `string`and handle the unstructured output downstream. The real fix is for server authors to provide- `outputSchema`.
 - **Extract a typed result using a fast model**, for single-shot calls outside loops. Expose a host-brokered- `extract(value, ExpectedType)`helper through the same stub-interception path as MCP tool calls so the sandbox itself never opens a network connection. The helper routes to a small model (for example, Claude Haiku or Gemini Flash) to coerce the value into- `ExpectedType`. This adds per-call latency and can hallucinate or drop fields, so validate the result against- `ExpectedType`before use.
@@ -90,10 +98,10 @@ When an output schema is absent, prefer the simple path:
 
 The right sandbox depends on the language you want the model to write, your host application’s language, and how much isolation you need. The table lists example runtimes rather than endorsements; evaluate maturity for your use case:| Sandboxed language | Runtime / Library | Host language | Approach | 
 |---|---|---|---|
-| JavaScript | Deno, `isolated-vm` | Rust / Node / CLI | V8-based runtimes with fine-grained permissions. Can disable all permissions for full lockdown. | 
-| Python | Monty (experimental) | Rust | Minimal Python interpreter built for AI use cases. No I/O by default. | 
-| TypeScript | pctx (early-stage) | Python / Rust | Incorporates code mode concepts as a library, with low-level Rust support. | 
-| Any (via Wasm) | Wasmtime | Rust / C / Go | Compile any language to Wasm and run it with capability-based security. | 
+| JavaScript | [Deno](https://github.com/denoland/deno),`isolated-vm` | Rust / Node / CLI | V8-based runtimes with fine-grained permissions. Can disable all permissions for full lockdown. | 
+| Python | [Monty](https://github.com/pydantic/monty)(experimental) | Rust | Minimal Python interpreter built for AI use cases. No I/O by default. | 
+| TypeScript | [pctx](https://github.com/portofcontext/pctx)(early-stage) | Python / Rust | Incorporates code mode concepts as a library, with low-level Rust support. | 
+| Any (via Wasm) | [Wasmtime](https://github.com/bytecodealliance/wasmtime) | Rust / C / Go | Compile any language to Wasm and run it with capability-based security. | 
 
 `tools/call` requests to MCP servers.
 ### Execution Architecture
@@ -107,7 +115,7 @@ The implementation has three components:**The sandbox**runs model-generated code
 `console.log` statements or a final return value. This gives the model (and the client developer) precise control over what enters the context window.
 ### Security Considerations
 
-Programmatic tool calling introduces a code execution surface that requires careful sandboxing:- **Per-call authorization**: The broker is still the MCP host for spec purposes. Apply the same human-in-the-loop confirmation policy to sandbox-originated calls that you apply to direct calls (see Tools: Security). Approving the script does not grant blanket approval for every tool call it makes at runtime; hosts may grant categorical approval (for example, “allow- `ticketing_createIssue`for this script run”) rather than prompting per iteration, but the broker must still evaluate each call against that grant.
+Programmatic tool calling introduces a code execution surface that requires careful sandboxing:- **Per-call authorization**: The broker is still the MCP host for spec purposes. Apply the same human-in-the-loop confirmation policy to sandbox-originated calls that you apply to direct calls (see- [Tools: Security](/specification/draft/server/tools#security-considerations)). Approving the script does not grant blanket approval for every tool call it makes at runtime; hosts may grant categorical approval (for example, “allow- `ticketing_createIssue`for this script run”) rather than prompting per iteration, but the broker must still evaluate each call against that grant.
 - **Cross-server data flow**: Tool results from one server are untrusted input to another. The broker should apply the same input-review policy to brokered calls as to direct ones; output truncation alone does not prevent exfiltration.
 - **Network isolation**: The sandbox should have no direct network access. All external communication flows through the host broker, which enforces authorization and access control.
 - **No credential exposure**: API keys and tokens are held by the host. The generated code calls typed functions; the host adds authentication when forwarding to servers.
@@ -116,9 +124,9 @@ Programmatic tool calling introduces a code execution surface that requires care
 
 ### Error Handling
 
-MCP tool errors arrive as a successful response with`isError: true` rather than a transport
-failure. Generated wrappers should convert this into a thrown exception so model-authored code
-can use `try`/`catch`. If an uncaught error terminates the script, surface it as the script’s
+MCP tool errors arrive as a successful response with[rather than a transport failure. Generated wrappers should convert this into a thrown exception so model-authored code can use](/specification/draft/server/tools#error-handling)
+
+`isError: true``try`/`catch`. If an uncaught error terminates the script, surface it as the script’s
 result so the model can self-correct; the model is responsible for reporting any partial side
 effects already committed.
 ## Combining Both Patterns

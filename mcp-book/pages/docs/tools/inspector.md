@@ -4,8 +4,12 @@ title: MCP Inspector - Model Context Protocol
 description: In-depth guide to using the MCP Inspector for testing and debugging Model
   Context Protocol servers
 resource: https://modelcontextprotocol.io/docs/tools/inspector
-timestamp: '2026-07-07T10:31:48.208319+00:00'
+timestamp: '2026-07-09T12:16:39.468634+00:00'
 ---
+
+[MCP Inspector](https://github.com/modelcontextprotocol/inspector)is an interactive developer tool for testing and debugging MCP servers. While the
+
+[Debugging Guide](/docs/tools/debugging)covers the Inspector as part of the overall debugging toolkit, this document provides a detailed exploration of the Inspector’s features and capabilities.
 
 ## Getting started
 
@@ -14,7 +18,11 @@ timestamp: '2026-07-07T10:31:48.208319+00:00'
 The Inspector runs directly through`npx` without requiring installation:
 #### Inspecting servers from npm or PyPI
 
-A common way to start server packages from npm or PyPI.- npm package
+A common way to start server packages from[npm](https://npmjs.com)or
+
+[PyPI](https://pypi.org).
+
+- npm package
 - PyPI package
 
 #### Inspecting locally developed servers
@@ -26,7 +34,7 @@ To inspect servers locally developed or downloaded as a repository, the most com
 
 ### Server connection pane
 
-- Allows selecting the transport for connecting to the server
+- Allows selecting the [transport](/specification/latest/basic/transports)for connecting to the server
 - For local servers, supports customizing the command-line arguments and environment
 
 ### Resources tab

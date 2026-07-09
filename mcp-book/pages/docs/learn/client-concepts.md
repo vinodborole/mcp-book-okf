@@ -2,7 +2,7 @@
 type: Web Page
 title: Understanding MCP clients - Model Context Protocol
 resource: https://modelcontextprotocol.io/docs/learn/client-concepts
-timestamp: '2026-07-07T10:31:48.208319+00:00'
+timestamp: '2026-07-09T12:16:39.468634+00:00'
 ---
 
 *host*is the application users interact with, while
@@ -49,7 +49,8 @@ A travel agent working with multiple client trips benefits from roots to organiz
 - `file:///Users/agent/client-documents`- Client passports and travel documents
 
 `file:///Users/agent/archive/2023-trips`, the client updates the roots list via `roots/list_changed`.
-For a complete implementation of a server that respects roots, see the filesystem server in the official servers repository.
+For a complete implementation of a server that respects roots, see the [filesystem server](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem)in the official servers repository.
+
 #### Design Philosophy
 
 Roots serve as a coordination mechanism between clients and servers, not a security boundary. The specification requires that servers “SHOULD respect root boundaries,” and not that they “MUST enforce” them, because servers run code the client cannot control. Roots work best when servers are trusted or vetted, users understand their advisory nature, and the goal is preventing accidents rather than stopping malicious behavior. They excel at context scoping (telling servers where to focus), accident prevention (helping well-behaved servers stay in bounds), and workflow organization (such as managing project boundaries automatically).#### User Interaction Model
