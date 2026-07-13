@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-  "updated_at": "2026-07-09T12:16:39.488861+00:00",
+  "updated_at": "2026-07-13T09:27:31.953162+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -40,13 +40,13 @@
       "path": "pages/docs/develop/connect-local-servers.md",
       "url": "https://modelcontextprotocol.io/docs/develop/connect-local-servers",
       "title": "Connect to local MCP servers - Model Context Protocol",
-      "hash": "c507cda9d6e0ff120b199631345c58f8961e425ab8e3dd20855315f876de5c9c"
+      "hash": "c35757e3e841437c58fcb591fb7e591c24f93e28cab7b718fd87adc69e2c5f3b"
     },
     {
       "path": "pages/docs/develop/connect-remote-servers.md",
       "url": "https://modelcontextprotocol.io/docs/develop/connect-remote-servers",
       "title": "Connect to remote MCP Servers - Model Context Protocol",
-      "hash": "24ead0f97c2e6a63cef541626fd4cba5fb6b737c93c136cb887b05255313e6f0"
+      "hash": "f49d1f51bf2f5bdc0eba08534fb7a2c70dcc23fe8e6fd8e808e608ef85117f7e"
     },
     {
       "path": "pages/docs/getting-started/intro.md",
@@ -264,9 +264,9 @@
     ]
   ],
   "last_sync": {
-    "synced_at": "2026-07-09T12:16:39.478594+00:00",
+    "synced_at": "2026-07-13T09:27:31.942912+00:00",
     "added": 0,
-    "changed": 15,
+    "changed": 2,
     "removed": 0,
     "pages": 16
   }

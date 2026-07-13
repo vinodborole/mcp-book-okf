@@ -4,7 +4,7 @@ title: Connect to local MCP servers - Model Context Protocol
 description: Learn how to extend Claude Desktop with local MCP servers to enable file
   system access and other powerful integrations
 resource: https://modelcontextprotocol.io/docs/develop/connect-local-servers
-timestamp: '2026-07-09T12:16:39.468634+00:00'
+timestamp: '2026-07-13T09:27:31.940432+00:00'
 ---
 
 ## Prerequisites
@@ -43,7 +43,7 @@ Replace the contents of the configuration file with the following JSON structure
 
 `username` with your actual computer username. The paths listed in the `args` array specify which directories the Filesystem Server can access. You can modify these paths or add additional directories as needed.Restart Claude Desktop
 
-After saving the configuration file, completely quit Claude Desktop and restart it. The application needs to restart to load the new configuration and start the MCP server.Upon successful restart, you’ll see an MCP server indicator  in the bottom-right corner of the conversation input box:Click on this indicator to view the available tools provided by the Filesystem Server:If the server indicator doesn’t appear, refer to the 
+After saving the configuration file, completely quit Claude Desktop and restart it. The application needs to restart to load the new configuration and start the MCP server.Upon successful restart, click the “Add files, connectors, and more /” indicator  in the bottom-left corner of the conversation input box:Click on this indicator, then move the mouse over “Connectors” and click “Manage connectors”. Select “filesystem” from the connector list to view the Filesystem Server’s available tools:If the Filesystem Server doesn’t connect, refer to the 
 
 [Troubleshooting](#troubleshooting)section for debugging steps.## Using the Filesystem Server
 
