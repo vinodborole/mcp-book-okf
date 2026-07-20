@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-  "updated_at": "2026-07-13T09:27:31.953162+00:00",
+  "updated_at": "2026-07-20T08:58:19.202194+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -28,25 +28,25 @@
       "path": "pages/docs/develop/build-with-agent-skills.md",
       "url": "https://modelcontextprotocol.io/docs/develop/build-with-agent-skills",
       "title": "Build with Agent Skills - Model Context Protocol",
-      "hash": "d78675bf79ce50607673ca06e6741379b24c795d5bf57c262c1d3ed11a3635c9"
+      "hash": "edcf666ad88ebbc6a9c06a5beb9941d1522f738029523407d6e4db72ba339a87"
     },
     {
       "path": "pages/docs/develop/clients/client-best-practices.md",
       "url": "https://modelcontextprotocol.io/docs/develop/clients/client-best-practices",
       "title": "Client Best Practices - Model Context Protocol",
-      "hash": "53d49351a453e3bde82d7a758ab54e317c3f4407ac45dbae7e688827352def4a"
+      "hash": "87d5b27d3fae43b842f25880c4b2760426b98ce1ab3496bcaa94eeed51dd4fbe"
     },
     {
       "path": "pages/docs/develop/connect-local-servers.md",
       "url": "https://modelcontextprotocol.io/docs/develop/connect-local-servers",
       "title": "Connect to local MCP servers - Model Context Protocol",
-      "hash": "c35757e3e841437c58fcb591fb7e591c24f93e28cab7b718fd87adc69e2c5f3b"
+      "hash": "d59e45b2b82446f59fda9ecafe6b7c279c393b9ea237a0d3299018203cfb9cb0"
     },
     {
       "path": "pages/docs/develop/connect-remote-servers.md",
       "url": "https://modelcontextprotocol.io/docs/develop/connect-remote-servers",
       "title": "Connect to remote MCP Servers - Model Context Protocol",
-      "hash": "f49d1f51bf2f5bdc0eba08534fb7a2c70dcc23fe8e6fd8e808e608ef85117f7e"
+      "hash": "a9a0726ed068bef0f85abb8cd17135bf8a73b19918adc56e320053fbde5db781"
     },
     {
       "path": "pages/docs/getting-started/intro.md",
@@ -58,19 +58,19 @@
       "path": "pages/docs/learn/architecture.md",
       "url": "https://modelcontextprotocol.io/docs/learn/architecture",
       "title": "Architecture overview - Model Context Protocol",
-      "hash": "5732de0e856fc1d417feff24be1323725a36d52ed1376e314e271e888af2c076"
+      "hash": "2cf4b8c29b105138a42692781cf6a6b70de69bebe5b989bf5a1463ef426f25ce"
     },
     {
       "path": "pages/docs/learn/client-concepts.md",
       "url": "https://modelcontextprotocol.io/docs/learn/client-concepts",
       "title": "Understanding MCP clients - Model Context Protocol",
-      "hash": "0228d18660a32bac590840b2c0754d697e37e8b5a81934b4fb127ae768f2a4e6"
+      "hash": "bf43d22a18113a1aa20260c4d7bb5cbdf3282664b620bd936d6859af445c46d0"
     },
     {
       "path": "pages/docs/learn/server-concepts.md",
       "url": "https://modelcontextprotocol.io/docs/learn/server-concepts",
       "title": "Understanding MCP servers - Model Context Protocol",
-      "hash": "be631146ff74f093c0a507d806336324bfe708fc1c587576ee10c464b2901196"
+      "hash": "9d008867b071c5698f9cee6841d9f02bf35c9a22e511de4b8ffe0d44bcd29d04"
     },
     {
       "path": "pages/docs/learn/versioning.md",
@@ -82,7 +82,7 @@
       "path": "pages/docs/sdk.md",
       "url": "https://modelcontextprotocol.io/docs/sdk",
       "title": "SDKs - Model Context Protocol",
-      "hash": "011013b8b9afc08e1ec559af7036ac1d763bbe0e8b88181946dbf820d22a2114"
+      "hash": "67d3d7ec9daf800fbf2bd94a1ab91af11c5cb3408806d2dfca2898977e71ac77"
     },
     {
       "path": "pages/docs/tools/debugging.md",
@@ -94,13 +94,13 @@
       "path": "pages/docs/tools/inspector.md",
       "url": "https://modelcontextprotocol.io/docs/tools/inspector",
       "title": "MCP Inspector - Model Context Protocol",
-      "hash": "636ee813b30ccaa70600130542f259616a5cf3bf6af7fbb3f6b5c546527b2a2a"
+      "hash": "2345897b7749bc487e05d76f0e42c373dfa4135aa5eb80e42b3b2571883b3506"
     },
     {
       "path": "pages/docs/tutorials/security/authorization.md",
       "url": "https://modelcontextprotocol.io/docs/tutorials/security/authorization",
       "title": "Understanding Authorization in MCP - Model Context Protocol",
-      "hash": "4640265c96f54c31b27da93c7337733ddd763e6c570f98ead21a175fe0811bce"
+      "hash": "0caf32c98b7511f4e4af46dd3a986ab550ad50ec5a2faf542804e9f5711a35c9"
     },
     {
       "path": "pages/docs/tutorials/security/security_best_practices.md",
@@ -264,9 +264,9 @@
     ]
   ],
   "last_sync": {
-    "synced_at": "2026-07-13T09:27:31.942912+00:00",
+    "synced_at": "2026-07-20T08:58:19.192018+00:00",
     "added": 0,
-    "changed": 2,
+    "changed": 10,
     "removed": 0,
     "pages": 16
   }

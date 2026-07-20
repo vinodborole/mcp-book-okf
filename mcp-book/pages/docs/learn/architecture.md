@@ -2,7 +2,7 @@
 type: Web Page
 title: Architecture overview - Model Context Protocol
 resource: https://modelcontextprotocol.io/docs/learn/architecture
-timestamp: '2026-07-09T12:16:39.468634+00:00'
+timestamp: '2026-07-20T08:58:19.184996+00:00'
 ---
 
 [scope](#scope)and
@@ -109,7 +109,9 @@ The protocol supports real-time notifications to enable dynamic updates between 
 
 ### Data Layer
 
-This section provides a step-by-step walkthrough of an MCP client-server interaction, focusing on the data layer protocol. We’ll demonstrate the lifecycle sequence, tool operations, and notifications using JSON-RPC 2.0 messages.Initialization (Lifecycle Management)
+This section provides a step-by-step walkthrough of an MCP client-server interaction, focusing on the data layer protocol. We’ll demonstrate the lifecycle sequence, tool operations, and notifications using JSON-RPC 2.0 messages.1
+
+Initialization (Lifecycle Management)
 
 MCP begins with lifecycle management through a capability negotiation handshake. As described in the 
 
@@ -133,6 +135,8 @@ Notification
 
 During initialization, the AI application’s MCP client manager establishes connections to configured servers and stores their capabilities for later use. The application uses this information to determine which servers can provide specific types of functionality (tools, resources, prompts) and whether they support real-time updates.Pseudo-code for AI application initialization
 
+2
+
 Tool Discovery (Primitives)
 
 Now that the connection is established, the client can discover available tools by sending a 
@@ -149,6 +153,8 @@ The response contains a`tools` array that provides comprehensive metadata about 
 #### How This Works in AI Applications
 
 The AI application fetches available tools from all connected MCP servers and combines them into a unified tool registry that the language model can access. This allows the LLM to understand what actions it can perform and automatically generates the appropriate tool calls during conversations.Pseudo-code for AI application tool discovery
+
+3
 
 Tool Execution (Primitives)
 
@@ -178,7 +184,9 @@ The response demonstrates MCP’s flexible content system:-
 
 #### How This Works in AI Applications
 
-When the language model decides to use a tool during a conversation, the AI application intercepts the tool call, routes it to the appropriate MCP server, executes it, and returns the results back to the LLM as part of the conversation flow. This enables the LLM to access real-time data and perform actions in the external world.Real-time Updates (Notifications)
+When the language model decides to use a tool during a conversation, the AI application intercepts the tool call, routes it to the appropriate MCP server, executes it, and returns the results back to the LLM as part of the conversation flow. This enables the LLM to access real-time data and perform actions in the external world.4
+
+Real-time Updates (Notifications)
 
 MCP supports real-time notifications that enable servers to inform clients about changes without being explicitly requested. This demonstrates the notification system, a key feature that keeps MCP connections synchronized and responsive.
 

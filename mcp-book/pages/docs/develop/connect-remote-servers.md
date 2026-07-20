@@ -4,7 +4,7 @@ title: Connect to remote MCP Servers - Model Context Protocol
 description: Learn how to connect Claude to remote MCP servers and extend its capabilities
   with internet-hosted tools and data sources
 resource: https://modelcontextprotocol.io/docs/develop/connect-remote-servers
-timestamp: '2026-07-13T09:27:31.940432+00:00'
+timestamp: '2026-07-20T08:58:19.184996+00:00'
 ---
 
 [Claude](https://claude.ai/)as an example, one of the many clients that support MCP. While we focus on Claude’s implementation through Custom Connectors, the concepts apply broadly to other MCP-compatible clients.
@@ -20,6 +20,8 @@ Custom Connectors serve as the bridge between Claude and remote MCP servers. The
 
 The process of connecting Claude to a remote MCP server involves adding a Custom Connector through the[Claude interface](https://claude.ai/). This establishes a secure connection between Claude and your chosen remote server.
 
+1
+
 Navigate to Connector Settings
 
 Open Claude Desktop or Claude in your browser, then navigate to the settings page:
@@ -27,19 +29,27 @@ Open Claude Desktop or Claude in your browser, then navigate to the settings pag
 - **Desktop**: Either use the keyboard shortcut- `Ctrl+Comma`or click the top-left menu icon , hover over “File”, and select “Settings”
 - **Browser**: Either use the keyboard shortcut- `⌘⇧,`(- *macOS*) or click on your profile icon, and select “Settings” from the menu
 
+2
+
 Add a Custom Connector
 
 In the Connectors section, click the “Add” button at the top-right of the window, then select “Add custom connector” from the dropdown. This begins the connection process. To follow along, copy/paste the URL below:A dialog will appear prompting you to enter the remote MCP server URL. This URL should be provided by the server developer or administrator. Enter the complete URL, ensuring it includes the proper protocol (https://) and any necessary path components.After entering the URL, click “Add” to proceed with the connection.
 
 Example Remote Server
 
+3
+
 Complete Authentication
 
 Most remote MCP servers require authentication to ensure secure access to their resources. The authentication process varies depending on the server implementation but commonly involves OAuth, API keys, or username/password combinations.Follow the authentication prompts provided by the server. This may redirect you to a third-party authentication provider or display a form within Claude. Once authentication is complete, Claude will establish a secure connection to the remote server.
 
+4
+
 Access Resources and Prompts
 
 After successful connection, the remote server’s resources and prompts become available in your Claude conversations. You can access these by clicking the “Add files, connectors, and more /” indicator  in the bottom-left corner of the message input area. Then hover over “Connectors”, move the cursor over “Add to Example Remote Server”, where hovering displays the attachment menu.The menu displays all available resources and prompts from your connected server. Select the items you want to include in your conversation. These resources provide Claude with context and information from your external tools.
+
+5
 
 Configure Tool Permissions
 

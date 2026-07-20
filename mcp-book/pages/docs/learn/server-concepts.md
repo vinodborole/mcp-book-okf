@@ -2,27 +2,19 @@
 type: Web Page
 title: Understanding MCP servers - Model Context Protocol
 resource: https://modelcontextprotocol.io/docs/learn/server-concepts
-timestamp: '2026-07-07T10:31:48.208319+00:00'
+timestamp: '2026-07-20T08:58:19.184996+00:00'
 ---
 
 ## Core Server Features
 
-Servers provide functionality through three building blocks:| Feature | Explanation | Examples | Who controls it | 
-|---|---|---|---|
-| Tools | Functions that your LLM can actively call, and decides when to use them based on user requests. Tools can write to databases, call external APIs, modify files, or trigger other logic. | Search flights Send messages Create calendar events | Model | 
-| Resources | Passive data sources that provide read-only access to information for context, such as file contents, database schemas, or API documentation. | Retrieve documents Access knowledge bases Read calendars | Application | 
-| Prompts | Pre-built instruction templates that tell the model to work with specific tools and resources. | Plan a vacation Summarize my meetings Draft an email | User | 
+Servers provide functionality through three building blocks:
+We will use a hypothetical scenario to demonstrate the role of each of these features, and show how they can work together.
 
 ### Tools
 
 Tools enable AI models to perform actions. Each tool defines a specific operation with typed inputs and outputs. The model requests tool execution based on context.#### How Tools Work
 
 Tools are schema-defined interfaces that LLMs can invoke. MCP uses JSON Schema for validation. Each tool performs a single operation with clearly defined inputs and outputs. Tools may require user consent prior to execution, helping to ensure users maintain control over actions taken by a model.**Protocol operations:**
-
-| Method | Purpose | Returns | 
-|---|---|---|
-| `tools/list` | Discover available tools | Array of tool definitions with schemas | 
-| `tools/call` | Execute a specific tool | Tool execution result | 
 
 **Example tool definition:**
 
@@ -54,13 +46,6 @@ Resources support two discovery patterns:
 
 **Protocol operations:**
 
-| Method | Purpose | Returns | 
-|---|---|---|
-| `resources/list` | List available direct resources | Array of resource descriptors | 
-| `resources/templates/list` | Discover resource templates | Array of resource template definitions | 
-| `resources/read` | Retrieve resource contents | Resource data with metadata | 
-| `resources/subscribe` | Monitor resource changes | Subscription confirmation | 
-
 #### Example: Getting Travel Planning Context
 
 Continuing with the travel planning example, resources provide the AI application with access to relevant information:- **Calendar data**(- `calendar://events/2024`) - Checks user availability
@@ -87,11 +72,6 @@ Resources are application-driven, giving them flexibility in how they retrieve, 
 Prompts provide reusable templates. They allow MCP server authors to provide parameterized prompts for a domain, or showcase how to best use the MCP server.#### How Prompts Work
 
 Prompts are structured templates that define expected inputs and interaction patterns. They are user-controlled, requiring explicit invocation rather than automatic triggering. Prompts can be context-aware, referencing available resources and tools to create comprehensive workflows. Similar to resources, prompts support parameter completion to help users discover valid argument values.**Protocol operations:**
-
-| Method | Purpose | Returns | 
-|---|---|---|
-| `prompts/list` | Discover available prompts | Array of prompt descriptors | 
-| `prompts/get` | Retrieve prompt details | Full prompt definition with arguments | 
 
 #### Example: Streamlined Workflows
 

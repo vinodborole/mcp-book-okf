@@ -4,7 +4,7 @@ title: Build with Agent Skills - Model Context Protocol
 description: Use agent skills to guide AI coding assistants through MCP server design
   and implementation
 resource: https://modelcontextprotocol.io/docs/develop/build-with-agent-skills
-timestamp: '2026-07-09T12:16:39.468634+00:00'
+timestamp: '2026-07-20T08:58:19.184996+00:00'
 ---
 
 [Agent skills](https://agentskills.io/home)are portable instruction sets that give AI coding assistants domain knowledge for a task. For MCP development, they encode the design decisions (deployment model, tool patterns, auth) so your agent can interrogate your use case and scaffold a server that fits.
@@ -13,11 +13,8 @@ timestamp: '2026-07-09T12:16:39.468634+00:00'
 
 A reference set of MCP development skills is available as the[. It provides three composing skills:](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/mcp-server-dev)
 
-`mcp-server-dev` plugin| Skill | Purpose | 
-|---|---|
-| `build-mcp-server` | Entry point. Interrogates the use case, picks a deployment model and tool-design pattern, routes to specialized skills. | 
-| `build-mcp-app` | Adds interactive UI widgets (forms, pickers, dashboards) rendered inline in chat. | 
-| `build-mcpb` | Packages a local stdio server with its runtime so users can install it without Node or Python. | 
+`mcp-server-dev` plugin
+Each skill ships a 
 
 `SKILL.md` file plus a `references/` folder of supporting
 material (auth flows, tool-design patterns, widget templates, manifest schemas)

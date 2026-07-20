@@ -4,7 +4,7 @@ title: MCP Inspector - Model Context Protocol
 description: In-depth guide to using the MCP Inspector for testing and debugging Model
   Context Protocol servers
 resource: https://modelcontextprotocol.io/docs/tools/inspector
-timestamp: '2026-07-09T12:16:39.468634+00:00'
+timestamp: '2026-07-20T08:58:19.184996+00:00'
 ---
 
 [MCP Inspector](https://github.com/modelcontextprotocol/inspector)is an interactive developer tool for testing and debugging MCP servers. While the
@@ -32,7 +32,7 @@ To inspect servers locally developed or downloaded as a repository, the most com
 
 ## Feature overview
 
-### Server connection pane
+The Inspector provides several features for interacting with your MCP server:### Server connection pane
 
 - Allows selecting the [transport](/specification/latest/basic/transports)for connecting to the server
 - For local servers, supports customizing the command-line arguments and environment

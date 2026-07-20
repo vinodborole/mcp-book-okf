@@ -4,7 +4,7 @@ title: Connect to local MCP servers - Model Context Protocol
 description: Learn how to extend Claude Desktop with local MCP servers to enable file
   system access and other powerful integrations
 resource: https://modelcontextprotocol.io/docs/develop/connect-local-servers
-timestamp: '2026-07-13T09:27:31.940432+00:00'
+timestamp: '2026-07-20T08:58:19.184996+00:00'
 ---
 
 ## Prerequisites
@@ -26,9 +26,13 @@ MCP servers are programs that run on your computer and provide specific capabili
 
 ## Installing the Filesystem Server
 
-The process involves configuring Claude Desktop to automatically start the Filesystem Server whenever you launch the application. This configuration is done through a JSON file that tells Claude Desktop which servers to run and how to connect to them.Open Claude Desktop Settings
+The process involves configuring Claude Desktop to automatically start the Filesystem Server whenever you launch the application. This configuration is done through a JSON file that tells Claude Desktop which servers to run and how to connect to them.1
+
+Open Claude Desktop Settings
 
 Start by accessing the Claude Desktop settings. Click on the Claude menu in your system’s menu bar (not the settings within the Claude window itself) and select “Settings…”On macOS, this appears in the top menu bar:This opens the Claude Desktop configuration window, which is separate from your Claude account settings.
+
+2
 
 Access Developer Settings
 
@@ -37,11 +41,15 @@ In the Settings window, navigate to the “Developer” tab in the left sidebar.
 - **macOS**:- `~/Library/Application Support/Claude/claude_desktop_config.json`
 - **Windows**:- `%APPDATA%\Claude\claude_desktop_config.json`
 
+3
+
 Configure the Filesystem Server
 
 Replace the contents of the configuration file with the following JSON structure. This configuration tells Claude Desktop to start the Filesystem Server with access to specific directories:Replace 
 
-`username` with your actual computer username. The paths listed in the `args` array specify which directories the Filesystem Server can access. You can modify these paths or add additional directories as needed.Restart Claude Desktop
+`username` with your actual computer username. The paths listed in the `args` array specify which directories the Filesystem Server can access. You can modify these paths or add additional directories as needed.4
+
+Restart Claude Desktop
 
 After saving the configuration file, completely quit Claude Desktop and restart it. The application needs to restart to load the new configuration and start the MCP server.Upon successful restart, click the “Add files, connectors, and more /” indicator  in the bottom-left corner of the conversation input box:Click on this indicator, then move the mouse over “Connectors” and click “Manage connectors”. Select “filesystem” from the connector list to view the Filesystem Server’s available tools:If the Filesystem Server doesn’t connect, refer to the 
 

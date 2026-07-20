@@ -4,7 +4,7 @@ title: Understanding Authorization in MCP - Model Context Protocol
 description: Learn how to implement secure authorization for MCP servers using OAuth
   2.1 to protect sensitive resources and operations
 resource: https://modelcontextprotocol.io/docs/tutorials/security/authorization
-timestamp: '2026-07-09T12:16:39.468634+00:00'
+timestamp: '2026-07-20T08:58:19.184996+00:00'
 ---
 
 [OAuth 2.1](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-13). For detailed information, see the
@@ -23,27 +23,43 @@ While authorization for MCP servers is**optional**, it is strongly recommended w
 
 ## The Authorization Flow: Step by Step
 
-Let’s walk through what happens when a client wants to connect to your protected MCP server:Initial Handshake
+Let’s walk through what happens when a client wants to connect to your protected MCP server:1
+
+Initial Handshake
 
 When your MCP client first tries to connect, your server responds with a This tells the client that authorization is required for the MCP server and where to get the necessary information to kickstart the authorization flow.
 
-`401 Unauthorized` and tells the client where to find authorization information, captured in a [Protected Resource Metadata (PRM) document](https://datatracker.ietf.org/doc/html/rfc9728). The document is hosted by the MCP server, follows a predictable path pattern, and is provided to the client in the`resource_metadata` parameter within the `WWW-Authenticate` header.Protected Resource Metadata Discovery
+`401 Unauthorized` and tells the client where to find authorization information, captured in a [Protected Resource Metadata (PRM) document](https://datatracker.ietf.org/doc/html/rfc9728). The document is hosted by the MCP server, follows a predictable path pattern, and is provided to the client in the`resource_metadata` parameter within the `WWW-Authenticate` header.2
+
+Protected Resource Metadata Discovery
 
 With the URI pointer to the PRM document, the client will fetch the metadata to learn about the authorization server, supported scopes, and other resource information. The data is typically encapsulated in a JSON blob, similar to the one below.You can see a more comprehensive example in 
 
-[RFC 9728 Section 3.2](https://datatracker.ietf.org/doc/html/rfc9728#name-protected-resource-metadata-r).Authorization Server Discovery
+[RFC 9728 Section 3.2](https://datatracker.ietf.org/doc/html/rfc9728#name-protected-resource-metadata-r).3
+
+Authorization Server Discovery
 
 Next, the client discovers what the authorization server can do by fetching its metadata. If the PRM document lists more than one authorization server, the client can decide which one to use.With an authorization server selected, the client will then construct a standard metadata URI and issue a request to the 
 
-[OpenID Connect (OIDC) Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html)or[OAuth 2.0 Auth Server Metadata](https://datatracker.ietf.org/doc/html/rfc8414)endpoints (depending on authorization server support) and retrieve another set of metadata properties that will allow it to know the endpoints it needs to complete the authorization flow.Client Registration
+[OpenID Connect (OIDC) Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html)or[OAuth 2.0 Auth Server Metadata](https://datatracker.ietf.org/doc/html/rfc8414)endpoints (depending on authorization server support) and retrieve another set of metadata properties that will allow it to know the endpoints it needs to complete the authorization flow.4
+
+Client Registration
 
 With all the metadata out of the way, the client now needs to make sure that it’s registered with the authorization server. This can be done in two ways.First, the client can be If the registration succeeds, the authorization server will return a JSON blob with client registration information.
 
-**pre-registered**with a given authorization server, in which case it can have embedded client registration information that it uses to complete the authorization flow.Alternatively, the client can use**Dynamic Client Registration**(DCR) to dynamically register itself with the authorization server. The latter scenario requires the authorization server to support DCR. If the authorization server does support DCR, the client will send a request to the`registration_endpoint` with its information:User Authorization
+**pre-registered**with a given authorization server, in which case it can have embedded client registration information that it uses to complete the authorization flow.Alternatively, the client can use**Dynamic Client Registration**(DCR) to dynamically register itself with the authorization server. The latter scenario requires the authorization server to support DCR. If the authorization server does support DCR, the client will send a request to the`registration_endpoint` with its information:5
+
+User Authorization
 
 The client will now need to open a browser to the The access token is what the client will use to authenticate requests to the MCP server. This step follows standard 
 
-`/authorize` endpoint, where the user can log in and grant the required permissions. The authorization server will then redirect back to the client with an authorization code that the client exchanges for tokens:[OAuth 2.1 authorization code with PKCE](https://oauth.net/2/grant-types/authorization-code/)conventions.## Implementation Example
+`/authorize` endpoint, where the user can log in and grant the required permissions. The authorization server will then redirect back to the client with an authorization code that the client exchanges for tokens:[OAuth 2.1 authorization code with PKCE](https://oauth.net/2/grant-types/authorization-code/)conventions.6
+
+Making Authenticated Requests
+
+Finally, the client can make requests to your MCP server using the access token embedded in the The MCP server will need to validate the token and process the request if the token is valid and has the required permissions.
+
+`Authorization` header:## Implementation Example
 
 To get started with a practical implementation, we will use a[Keycloak](https://www.keycloak.org/)authorization server hosted in a Docker container. Keycloak is an open-source authorization server that can be easily deployed locally for testing and experimentation. Make sure that you download and install
 

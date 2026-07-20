@@ -3,7 +3,7 @@ type: Web Page
 title: Client Best Practices - Model Context Protocol
 description: Patterns for scaling MCP host applications across many servers and tools.
 resource: https://modelcontextprotocol.io/docs/develop/clients/client-best-practices
-timestamp: '2026-07-09T12:16:39.468634+00:00'
+timestamp: '2026-07-20T08:58:19.184996+00:00'
 ---
 
 **progressive discovery**, which controls
@@ -56,14 +56,7 @@ Progressive discovery extends beyond individual tools to entire servers. Rather 
 
 ### Implementation Guidelines
 
-When implementing progressive discovery:| Guideline | Rationale | 
-|---|---|
-| Offer multiple detail levels | Let the model choose between name-only, name-and-description, or full-schema responses. | 
-| Cache tool definitions | Once fetched from a server, memoize the definition host-side so re-injecting it later doesn’t need another `tools/list`round trip. This is separate from what’s currently in the model’s context. | 
-| Refresh on `list_changed` | Re-index the search catalog when a server sends `notifications/tools/list_changed`. | 
-| Group tools by server | Present tools organized by their source server so the model can reason about related capabilities. | 
-
-### Interaction with Prompt Caching
+When implementing progressive discovery:### Interaction with Prompt Caching
 
 Most providers cache the prompt prefix, including the`tools` array. Adding or removing tool
 definitions mid-conversation invalidates that cache, and the resulting miss can cost more tokens
@@ -96,12 +89,8 @@ When an output schema is absent, prefer the simple path:
 `console.log` output, a single summary line, returns to the model.
 ### Choosing a Sandbox
 
-The right sandbox depends on the language you want the model to write, your host application’s language, and how much isolation you need. The table lists example runtimes rather than endorsements; evaluate maturity for your use case:| Sandboxed language | Runtime / Library | Host language | Approach | 
-|---|---|---|---|
-| JavaScript | [Deno](https://github.com/denoland/deno),`isolated-vm` | Rust / Node / CLI | V8-based runtimes with fine-grained permissions. Can disable all permissions for full lockdown. | 
-| Python | [Monty](https://github.com/pydantic/monty)(experimental) | Rust | Minimal Python interpreter built for AI use cases. No I/O by default. | 
-| TypeScript | [pctx](https://github.com/portofcontext/pctx)(early-stage) | Python / Rust | Incorporates code mode concepts as a library, with low-level Rust support. | 
-| Any (via Wasm) | [Wasmtime](https://github.com/bytecodealliance/wasmtime) | Rust / C / Go | Compile any language to Wasm and run it with capability-based security. | 
+The right sandbox depends on the language you want the model to write, your host application’s language, and how much isolation you need. The table lists example runtimes rather than endorsements; evaluate maturity for your use case:
+Regardless of sandbox, the integration pattern is the same: the host injects function stubs, intercepts calls over an in-process or stdio channel (so network permissions can stay fully denied), and dispatches them as 
 
 `tools/call` requests to MCP servers.
 ### Execution Architecture

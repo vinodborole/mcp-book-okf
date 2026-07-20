@@ -2,7 +2,7 @@
 type: Web Page
 title: Understanding MCP clients - Model Context Protocol
 resource: https://modelcontextprotocol.io/docs/learn/client-concepts
-timestamp: '2026-07-09T12:16:39.468634+00:00'
+timestamp: '2026-07-20T08:58:19.184996+00:00'
 ---
 
 *host*is the application users interact with, while
@@ -11,13 +11,7 @@ timestamp: '2026-07-09T12:16:39.468634+00:00'
 
 ## Core Client Features
 
-In addition to making use of context provided by servers, clients may provide several features to servers. These client features allow server authors to build richer interactions.| Feature | Explanation | Example | 
-|---|---|---|
-| Elicitation | Elicitation enables servers to request specific information from users during interactions, providing a structured way for servers to gather information on demand. | A server booking travel may ask for the user’s preferences on airplane seats, room type or their contact number to finalise a booking. | 
-| Roots | Roots allow clients to specify which directories servers should focus on, communicating intended scope through a coordination mechanism. | A server for booking travel may be given access to a specific directory, from which it can read a user’s calendar. | 
-| Sampling | Sampling allows servers to request LLM completions through the client, enabling an agentic workflow. This approach puts the client in complete control of user permissions and security measures. | A server for booking travel may send a list of flights to an LLM and request that the LLM pick the best flight for the user. | 
-
-### Elicitation
+In addition to making use of context provided by servers, clients may provide several features to servers. These client features allow server authors to build richer interactions.### Elicitation
 
 Elicitation enables servers to request specific information from users during interactions, creating more dynamic and responsive workflows.#### Overview
 
