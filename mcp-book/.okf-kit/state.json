@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-  "updated_at": "2026-07-20T08:58:19.202194+00:00",
+  "updated_at": "2026-07-27T09:52:00.531044+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -264,9 +264,9 @@
     ]
   ],
   "last_sync": {
-    "synced_at": "2026-07-20T08:58:19.192018+00:00",
+    "synced_at": "2026-07-27T09:52:00.520355+00:00",
     "added": 0,
-    "changed": 10,
+    "changed": 0,
     "removed": 0,
     "pages": 16
   }
