@@ -1,8 +1,4 @@
 # /pages/docs — directory listing
 
-- [develop/](/pages/docs/develop/index.md)
-- [getting-started/](/pages/docs/getting-started/index.md)
-- [learn/](/pages/docs/learn/index.md)
-- [tools/](/pages/docs/tools/index.md)
-- [tutorials/](/pages/docs/tutorials/index.md)
-- [SDKs - Model Context Protocol](/pages/docs/sdk.md)
+- [2025-11-25/](/pages/docs/2025-11-25/index.md)
+- [2026-07-28/](/pages/docs/2026-07-28/index.md)

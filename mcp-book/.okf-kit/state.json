@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-  "updated_at": "2026-07-27T09:52:00.531044+00:00",
+  "updated_at": "2026-08-03T09:44:29.596619+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -10,264 +10,472 @@
     "respect_robots": true,
     "path_prefix": "/docs/"
   },
-  "page_count": 16,
+  "page_count": 24,
   "pages": [
     {
-      "path": "pages/docs/develop/build-client.md",
-      "url": "https://modelcontextprotocol.io/docs/develop/build-client",
-      "title": "Build an MCP client - Model Context Protocol",
-      "hash": "0b1bcc9974bc7ee2d8fe4dfe24edb27921314bae1b4d6f393a58bdbac168722e"
-    },
-    {
-      "path": "pages/docs/develop/build-server.md",
-      "url": "https://modelcontextprotocol.io/docs/develop/build-server",
-      "title": "Build an MCP server - Model Context Protocol",
-      "hash": "4f872602d6eb230e9b4bb06749e8516b8cd7c8f68fca0c158914577c374ee548"
-    },
-    {
-      "path": "pages/docs/develop/build-with-agent-skills.md",
-      "url": "https://modelcontextprotocol.io/docs/develop/build-with-agent-skills",
-      "title": "Build with Agent Skills - Model Context Protocol",
-      "hash": "edcf666ad88ebbc6a9c06a5beb9941d1522f738029523407d6e4db72ba339a87"
-    },
-    {
-      "path": "pages/docs/develop/clients/client-best-practices.md",
-      "url": "https://modelcontextprotocol.io/docs/develop/clients/client-best-practices",
-      "title": "Client Best Practices - Model Context Protocol",
-      "hash": "87d5b27d3fae43b842f25880c4b2760426b98ce1ab3496bcaa94eeed51dd4fbe"
-    },
-    {
-      "path": "pages/docs/develop/connect-local-servers.md",
-      "url": "https://modelcontextprotocol.io/docs/develop/connect-local-servers",
-      "title": "Connect to local MCP servers - Model Context Protocol",
-      "hash": "d59e45b2b82446f59fda9ecafe6b7c279c393b9ea237a0d3299018203cfb9cb0"
-    },
-    {
-      "path": "pages/docs/develop/connect-remote-servers.md",
-      "url": "https://modelcontextprotocol.io/docs/develop/connect-remote-servers",
-      "title": "Connect to remote MCP Servers - Model Context Protocol",
-      "hash": "a9a0726ed068bef0f85abb8cd17135bf8a73b19918adc56e320053fbde5db781"
-    },
-    {
-      "path": "pages/docs/getting-started/intro.md",
-      "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-      "title": "What is the Model Context Protocol (MCP)? - Model Context Protocol",
-      "hash": "80cacad83e30caf2025b074870ac41900643665c155abe7dc3f6c3f6aa503674"
-    },
-    {
-      "path": "pages/docs/learn/architecture.md",
-      "url": "https://modelcontextprotocol.io/docs/learn/architecture",
-      "title": "Architecture overview - Model Context Protocol",
-      "hash": "2cf4b8c29b105138a42692781cf6a6b70de69bebe5b989bf5a1463ef426f25ce"
-    },
-    {
-      "path": "pages/docs/learn/client-concepts.md",
-      "url": "https://modelcontextprotocol.io/docs/learn/client-concepts",
-      "title": "Understanding MCP clients - Model Context Protocol",
-      "hash": "bf43d22a18113a1aa20260c4d7bb5cbdf3282664b620bd936d6859af445c46d0"
-    },
-    {
-      "path": "pages/docs/learn/server-concepts.md",
-      "url": "https://modelcontextprotocol.io/docs/learn/server-concepts",
-      "title": "Understanding MCP servers - Model Context Protocol",
-      "hash": "9d008867b071c5698f9cee6841d9f02bf35c9a22e511de4b8ffe0d44bcd29d04"
-    },
-    {
-      "path": "pages/docs/learn/versioning.md",
-      "url": "https://modelcontextprotocol.io/docs/learn/versioning",
-      "title": "Versioning - Model Context Protocol",
-      "hash": "ff37e290627510dbd323abcbc7e7fb62ce930c14f1ce02f89be14a121e6edfd5"
-    },
-    {
-      "path": "pages/docs/sdk.md",
-      "url": "https://modelcontextprotocol.io/docs/sdk",
-      "title": "SDKs - Model Context Protocol",
-      "hash": "67d3d7ec9daf800fbf2bd94a1ab91af11c5cb3408806d2dfca2898977e71ac77"
-    },
-    {
-      "path": "pages/docs/tools/debugging.md",
-      "url": "https://modelcontextprotocol.io/docs/tools/debugging",
-      "title": "Debugging - Model Context Protocol",
-      "hash": "bfa50f4805a33751737ffc94c844a6b680bdc6092afc6c336c8216d62d0cb9b5"
-    },
-    {
-      "path": "pages/docs/tools/inspector.md",
-      "url": "https://modelcontextprotocol.io/docs/tools/inspector",
-      "title": "MCP Inspector - Model Context Protocol",
-      "hash": "2345897b7749bc487e05d76f0e42c373dfa4135aa5eb80e42b3b2571883b3506"
-    },
-    {
-      "path": "pages/docs/tutorials/security/authorization.md",
-      "url": "https://modelcontextprotocol.io/docs/tutorials/security/authorization",
-      "title": "Understanding Authorization in MCP - Model Context Protocol",
-      "hash": "0caf32c98b7511f4e4af46dd3a986ab550ad50ec5a2faf542804e9f5711a35c9"
-    },
-    {
-      "path": "pages/docs/tutorials/security/security_best_practices.md",
-      "url": "https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices",
+      "path": "pages/docs/2025-11-25/tutorials/security/security_best_practices.md",
+      "url": "https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices",
       "title": "Security Best Practices - Model Context Protocol",
-      "hash": "e1b61123e459befa2e581b011530148857dcccf96e02e123f2bd40bc89f99466"
+      "hash": "be238c42ee9314716e589f66d0f2e2caf5a068cd065f1c9ee53221ca0fcb0fb1"
+    },
+    {
+      "path": "pages/docs/2026-07-28/develop/build-client.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/develop/build-client",
+      "title": "Build an MCP client - Model Context Protocol",
+      "hash": "a12af50c478c900b6e3af25e4648b96eca3db3e8352551671e3029d69ec5dffe"
+    },
+    {
+      "path": "pages/docs/2026-07-28/develop/build-server.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/develop/build-server",
+      "title": "Build an MCP server - Model Context Protocol",
+      "hash": "883d35cb29fd77910bb734a4e6421026ac6e2e35d5923e008ac48e8798531b98"
+    },
+    {
+      "path": "pages/docs/2026-07-28/develop/build-with-agent-skills.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/develop/build-with-agent-skills",
+      "title": "Build with Agent Skills - Model Context Protocol",
+      "hash": "894d0485973c29c3f6d0128bc93729cf72170a8e27c1d64dea2baa8fd9d53b2d"
+    },
+    {
+      "path": "pages/docs/2026-07-28/develop/clients/client-best-practices.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/develop/clients/client-best-practices",
+      "title": "Client Best Practices - Model Context Protocol",
+      "hash": "b6df6bf05a9c2262f12a8540935746b4e74a0864cf57ff7eac262224d0e58ea6"
+    },
+    {
+      "path": "pages/docs/2026-07-28/develop/connect-local-servers.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/develop/connect-local-servers",
+      "title": "Connect to local MCP servers - Model Context Protocol",
+      "hash": "26b0ea0daa17577dbd40dcc6c0e6ad8479dd81e02f186c577210ff1a081b24b3"
+    },
+    {
+      "path": "pages/docs/2026-07-28/develop/connect-remote-servers.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/develop/connect-remote-servers",
+      "title": "Connect to remote MCP Servers - Model Context Protocol",
+      "hash": "865fd698640acd64d1cbf95fcfa4e4f0308f5295c41725b5b51e1d491d0b4ca9"
+    },
+    {
+      "path": "pages/docs/2026-07-28/getting-started/intro.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro",
+      "title": "What is the Model Context Protocol (MCP)? - Model Context Protocol",
+      "hash": "498600cb5b7d2e7455d58a78bb01ce32cf4fb4368effb25c06afb3ef2390f104"
+    },
+    {
+      "path": "pages/docs/2026-07-28/learn/architecture.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture",
+      "title": "Architecture overview - Model Context Protocol",
+      "hash": "6ee9467f2fcb94855cca0f5c336444b2b2c8e7604b722fbffdf50e4b07708d31"
+    },
+    {
+      "path": "pages/docs/2026-07-28/learn/client-concepts.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/client-concepts",
+      "title": "Understanding MCP clients - Model Context Protocol",
+      "hash": "146bdc6db0c23fc9fd3d5c31487c430603471a316bf5feb0845a34fbf34dc095"
+    },
+    {
+      "path": "pages/docs/2026-07-28/learn/server-concepts.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/server-concepts",
+      "title": "Understanding MCP servers - Model Context Protocol",
+      "hash": "aa60318e70e7aae36cff3e7d8dc397c015ca6cfa6e63366ff35ab85c7e330b92"
+    },
+    {
+      "path": "pages/docs/2026-07-28/learn/versioning.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/versioning",
+      "title": "Versioning - Model Context Protocol",
+      "hash": "bbc3f5c9251f54c6e15d69b657468a5ad96e6a4ea2a772ee7603ce03d98e0bd8"
+    },
+    {
+      "path": "pages/docs/2026-07-28/sdk.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/sdk",
+      "title": "SDKs - Model Context Protocol",
+      "hash": "2955d41a730f7af07a2df6b8b16839152741912e6a6f330473ec659e858d7fe8"
+    },
+    {
+      "path": "pages/docs/2026-07-28/tools/debugging.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tools/debugging",
+      "title": "Debugging - Model Context Protocol",
+      "hash": "d4e4874cc87b84585a7b3b18fa698f0b5fdc799c36ec030462c6b9e0ddf4f779"
+    },
+    {
+      "path": "pages/docs/2026-07-28/tools/inspector.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector",
+      "title": "MCP Inspector - Model Context Protocol",
+      "hash": "34e5b6785983d147aa96c9762de1dac87c086e91c80549b1929df7f1fe8a4d65"
+    },
+    {
+      "path": "pages/docs/2026-07-28/tools/inspector/authorization.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector/authorization",
+      "title": "Authorization - Model Context Protocol",
+      "hash": "f14be0de6470eedd3247cf9b958286025f3e06381bfd61f262c6a445b9d358ee"
+    },
+    {
+      "path": "pages/docs/2026-07-28/tools/inspector/cli.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector/cli",
+      "title": "CLI client - Model Context Protocol",
+      "hash": "8963fcc77b8db46ea02bfe6dd9c58ae1b439f2b06ea30cffdfdaeb57a20b7994"
+    },
+    {
+      "path": "pages/docs/2026-07-28/tools/inspector/configuration.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector/configuration",
+      "title": "Configuration and flags - Model Context Protocol",
+      "hash": "2704ed4eb1e5bd1339fcfde9a501d4c3bfddd51e86375900b25e8946cdbab779"
+    },
+    {
+      "path": "pages/docs/2026-07-28/tools/inspector/protocol-eras.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector/protocol-eras",
+      "title": "Protocol eras - Model Context Protocol",
+      "hash": "51233ae0fa9ca576e73d7364fabb72264cee6b5f083799320065d71991e00ba3"
+    },
+    {
+      "path": "pages/docs/2026-07-28/tools/inspector/recipes.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector/recipes",
+      "title": "Recipes - Model Context Protocol",
+      "hash": "bc24becb2c6fc0f663bd630399bb196c5ca21ca519c761c845762d0a5268c4bb"
+    },
+    {
+      "path": "pages/docs/2026-07-28/tools/inspector/tui.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector/tui",
+      "title": "TUI client - Model Context Protocol",
+      "hash": "e42a6a57ab3c288b0709c0f94ca3e088f90f75da4816391c0fd26ce59b8e2477"
+    },
+    {
+      "path": "pages/docs/2026-07-28/tools/inspector/web.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector/web",
+      "title": "Web client - Model Context Protocol",
+      "hash": "ce0e448fe5cefc3ac2e6cc9c9e27fcafa2bf588b55fcf480f42c4c8c2b57a81f"
+    },
+    {
+      "path": "pages/docs/2026-07-28/tutorials/security/authorization.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/authorization",
+      "title": "Understanding Authorization in MCP - Model Context Protocol",
+      "hash": "8f3ce978f8c98de29e2d0ad998e389c5bd7640ca8aab2817899a62da6ceccc9b"
+    },
+    {
+      "path": "pages/docs/2026-07-28/tutorials/security/security_best_practices.md",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+      "title": "Security Best Practices - Model Context Protocol",
+      "hash": "2015c232fb6c2bb8df917e1388b70cb712f22b78e0a69da1e63355bf4e29811e"
     }
   ],
   "edges": [
     [
-      "pages/docs/develop/build-client.md",
-      "pages/docs/develop/build-server.md"
+      "pages/docs/2026-07-28/develop/build-client.md",
+      "pages/docs/2026-07-28/develop/build-server.md"
     ],
     [
-      "pages/docs/develop/build-client.md",
-      "pages/docs/develop/clients/client-best-practices.md"
+      "pages/docs/2026-07-28/develop/build-client.md",
+      "pages/docs/2026-07-28/develop/clients/client-best-practices.md"
     ],
     [
-      "pages/docs/develop/build-server.md",
-      "pages/docs/develop/build-client.md"
+      "pages/docs/2026-07-28/develop/build-server.md",
+      "pages/docs/2026-07-28/develop/build-client.md"
     ],
     [
-      "pages/docs/develop/build-server.md",
-      "pages/docs/develop/build-with-agent-skills.md"
+      "pages/docs/2026-07-28/develop/build-server.md",
+      "pages/docs/2026-07-28/develop/build-with-agent-skills.md"
     ],
     [
-      "pages/docs/develop/build-server.md",
-      "pages/docs/learn/server-concepts.md"
+      "pages/docs/2026-07-28/develop/build-server.md",
+      "pages/docs/2026-07-28/learn/server-concepts.md"
     ],
     [
-      "pages/docs/develop/build-server.md",
-      "pages/docs/tools/debugging.md"
+      "pages/docs/2026-07-28/develop/build-server.md",
+      "pages/docs/2026-07-28/tools/debugging.md"
     ],
     [
-      "pages/docs/develop/build-with-agent-skills.md",
-      "pages/docs/develop/build-server.md"
+      "pages/docs/2026-07-28/develop/build-with-agent-skills.md",
+      "pages/docs/2026-07-28/develop/build-server.md"
     ],
     [
-      "pages/docs/develop/build-with-agent-skills.md",
-      "pages/docs/develop/connect-remote-servers.md"
+      "pages/docs/2026-07-28/develop/build-with-agent-skills.md",
+      "pages/docs/2026-07-28/develop/connect-remote-servers.md"
     ],
     [
-      "pages/docs/develop/clients/client-best-practices.md",
-      "pages/docs/develop/build-client.md"
+      "pages/docs/2026-07-28/develop/clients/client-best-practices.md",
+      "pages/docs/2026-07-28/develop/build-client.md"
     ],
     [
-      "pages/docs/develop/clients/client-best-practices.md",
-      "pages/docs/develop/build-with-agent-skills.md"
+      "pages/docs/2026-07-28/develop/clients/client-best-practices.md",
+      "pages/docs/2026-07-28/develop/build-with-agent-skills.md"
     ],
     [
-      "pages/docs/develop/clients/client-best-practices.md",
-      "pages/docs/sdk.md"
+      "pages/docs/2026-07-28/develop/clients/client-best-practices.md",
+      "pages/docs/2026-07-28/sdk.md"
     ],
     [
-      "pages/docs/develop/connect-local-servers.md",
-      "pages/docs/develop/connect-remote-servers.md"
+      "pages/docs/2026-07-28/develop/connect-local-servers.md",
+      "pages/docs/2026-07-28/develop/connect-remote-servers.md"
     ],
     [
-      "pages/docs/develop/connect-local-servers.md",
-      "pages/docs/learn/versioning.md"
+      "pages/docs/2026-07-28/develop/connect-local-servers.md",
+      "pages/docs/2026-07-28/learn/versioning.md"
     ],
     [
-      "pages/docs/develop/connect-local-servers.md",
-      "pages/docs/tools/debugging.md"
+      "pages/docs/2026-07-28/develop/connect-local-servers.md",
+      "pages/docs/2026-07-28/tools/debugging.md"
     ],
     [
-      "pages/docs/develop/connect-remote-servers.md",
-      "pages/docs/develop/build-with-agent-skills.md"
+      "pages/docs/2026-07-28/develop/connect-remote-servers.md",
+      "pages/docs/2026-07-28/develop/build-with-agent-skills.md"
     ],
     [
-      "pages/docs/develop/connect-remote-servers.md",
-      "pages/docs/develop/connect-local-servers.md"
+      "pages/docs/2026-07-28/develop/connect-remote-servers.md",
+      "pages/docs/2026-07-28/develop/connect-local-servers.md"
     ],
     [
-      "pages/docs/getting-started/intro.md",
-      "pages/docs/learn/architecture.md"
+      "pages/docs/2026-07-28/getting-started/intro.md",
+      "pages/docs/2026-07-28/learn/architecture.md"
     ],
     [
-      "pages/docs/learn/architecture.md",
-      "pages/docs/getting-started/intro.md"
+      "pages/docs/2026-07-28/learn/architecture.md",
+      "pages/docs/2026-07-28/develop/clients/client-best-practices.md"
     ],
     [
-      "pages/docs/learn/architecture.md",
-      "pages/docs/learn/client-concepts.md"
+      "pages/docs/2026-07-28/learn/architecture.md",
+      "pages/docs/2026-07-28/getting-started/intro.md"
     ],
     [
-      "pages/docs/learn/architecture.md",
-      "pages/docs/learn/server-concepts.md"
+      "pages/docs/2026-07-28/learn/architecture.md",
+      "pages/docs/2026-07-28/learn/client-concepts.md"
     ],
     [
-      "pages/docs/learn/architecture.md",
-      "pages/docs/sdk.md"
+      "pages/docs/2026-07-28/learn/architecture.md",
+      "pages/docs/2026-07-28/learn/server-concepts.md"
     ],
     [
-      "pages/docs/learn/client-concepts.md",
-      "pages/docs/learn/server-concepts.md"
+      "pages/docs/2026-07-28/learn/architecture.md",
+      "pages/docs/2026-07-28/sdk.md"
     ],
     [
-      "pages/docs/learn/client-concepts.md",
-      "pages/docs/learn/versioning.md"
+      "pages/docs/2026-07-28/learn/client-concepts.md",
+      "pages/docs/2026-07-28/learn/server-concepts.md"
     ],
     [
-      "pages/docs/learn/server-concepts.md",
-      "pages/docs/learn/architecture.md"
+      "pages/docs/2026-07-28/learn/client-concepts.md",
+      "pages/docs/2026-07-28/learn/versioning.md"
     ],
     [
-      "pages/docs/learn/server-concepts.md",
-      "pages/docs/learn/client-concepts.md"
+      "pages/docs/2026-07-28/learn/server-concepts.md",
+      "pages/docs/2026-07-28/learn/architecture.md"
     ],
     [
-      "pages/docs/learn/versioning.md",
-      "pages/docs/develop/connect-local-servers.md"
+      "pages/docs/2026-07-28/learn/server-concepts.md",
+      "pages/docs/2026-07-28/learn/client-concepts.md"
     ],
     [
-      "pages/docs/learn/versioning.md",
-      "pages/docs/learn/client-concepts.md"
+      "pages/docs/2026-07-28/learn/versioning.md",
+      "pages/docs/2026-07-28/develop/connect-local-servers.md"
     ],
     [
-      "pages/docs/sdk.md",
-      "pages/docs/develop/clients/client-best-practices.md"
+      "pages/docs/2026-07-28/learn/versioning.md",
+      "pages/docs/2026-07-28/learn/client-concepts.md"
     ],
     [
-      "pages/docs/sdk.md",
-      "pages/docs/tutorials/security/authorization.md"
+      "pages/docs/2026-07-28/sdk.md",
+      "pages/docs/2026-07-28/develop/clients/client-best-practices.md"
     ],
     [
-      "pages/docs/tools/debugging.md",
-      "pages/docs/develop/connect-local-servers.md"
+      "pages/docs/2026-07-28/sdk.md",
+      "pages/docs/2026-07-28/tutorials/security/authorization.md"
     ],
     [
-      "pages/docs/tools/debugging.md",
-      "pages/docs/tools/inspector.md"
+      "pages/docs/2026-07-28/tools/debugging.md",
+      "pages/docs/2026-07-28/develop/connect-local-servers.md"
     ],
     [
-      "pages/docs/tools/debugging.md",
-      "pages/docs/tutorials/security/security_best_practices.md"
+      "pages/docs/2026-07-28/tools/debugging.md",
+      "pages/docs/2026-07-28/learn/versioning.md"
     ],
     [
-      "pages/docs/tools/inspector.md",
-      "pages/docs/tools/debugging.md"
+      "pages/docs/2026-07-28/tools/debugging.md",
+      "pages/docs/2026-07-28/tools/inspector.md"
     ],
     [
-      "pages/docs/tools/inspector.md",
-      "pages/docs/tutorials/security/security_best_practices.md"
+      "pages/docs/2026-07-28/tools/debugging.md",
+      "pages/docs/2026-07-28/tools/inspector/recipes.md"
     ],
     [
-      "pages/docs/tutorials/security/authorization.md",
-      "pages/docs/sdk.md"
+      "pages/docs/2026-07-28/tools/debugging.md",
+      "pages/docs/2026-07-28/tutorials/security/security_best_practices.md"
     ],
     [
-      "pages/docs/tutorials/security/authorization.md",
-      "pages/docs/tutorials/security/security_best_practices.md"
+      "pages/docs/2026-07-28/tools/inspector.md",
+      "pages/docs/2026-07-28/learn/server-concepts.md"
     ],
     [
-      "pages/docs/tutorials/security/security_best_practices.md",
-      "pages/docs/tools/inspector.md"
+      "pages/docs/2026-07-28/tools/inspector.md",
+      "pages/docs/2026-07-28/tools/inspector/cli.md"
     ],
     [
-      "pages/docs/tutorials/security/security_best_practices.md",
-      "pages/docs/tutorials/security/authorization.md"
+      "pages/docs/2026-07-28/tools/inspector.md",
+      "pages/docs/2026-07-28/tools/inspector/configuration.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector.md",
+      "pages/docs/2026-07-28/tools/inspector/protocol-eras.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector.md",
+      "pages/docs/2026-07-28/tools/inspector/tui.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector.md",
+      "pages/docs/2026-07-28/tools/inspector/web.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector.md",
+      "pages/docs/2026-07-28/tutorials/security/security_best_practices.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/authorization.md",
+      "pages/docs/2026-07-28/tools/inspector/configuration.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/authorization.md",
+      "pages/docs/2026-07-28/tools/inspector/protocol-eras.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/authorization.md",
+      "pages/docs/2026-07-28/tools/inspector/web.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/cli.md",
+      "pages/docs/2026-07-28/tools/inspector/authorization.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/cli.md",
+      "pages/docs/2026-07-28/tools/inspector/configuration.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/cli.md",
+      "pages/docs/2026-07-28/tools/inspector/protocol-eras.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/cli.md",
+      "pages/docs/2026-07-28/tools/inspector/tui.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/cli.md",
+      "pages/docs/2026-07-28/tools/inspector/web.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/configuration.md",
+      "pages/docs/2026-07-28/tools/inspector/authorization.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/configuration.md",
+      "pages/docs/2026-07-28/tools/inspector/cli.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/configuration.md",
+      "pages/docs/2026-07-28/tools/inspector/protocol-eras.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/configuration.md",
+      "pages/docs/2026-07-28/tools/inspector/recipes.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/configuration.md",
+      "pages/docs/2026-07-28/tools/inspector/tui.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/configuration.md",
+      "pages/docs/2026-07-28/tools/inspector/web.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/protocol-eras.md",
+      "pages/docs/2026-07-28/tools/inspector/authorization.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/protocol-eras.md",
+      "pages/docs/2026-07-28/tools/inspector/recipes.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/recipes.md",
+      "pages/docs/2026-07-28/tools/debugging.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/recipes.md",
+      "pages/docs/2026-07-28/tools/inspector/authorization.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/recipes.md",
+      "pages/docs/2026-07-28/tools/inspector/cli.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/recipes.md",
+      "pages/docs/2026-07-28/tools/inspector/configuration.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/recipes.md",
+      "pages/docs/2026-07-28/tools/inspector/protocol-eras.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/recipes.md",
+      "pages/docs/2026-07-28/tools/inspector/web.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/tui.md",
+      "pages/docs/2026-07-28/tools/inspector/authorization.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/tui.md",
+      "pages/docs/2026-07-28/tools/inspector/cli.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/tui.md",
+      "pages/docs/2026-07-28/tools/inspector/configuration.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/web.md",
+      "pages/docs/2026-07-28/tools/inspector.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/web.md",
+      "pages/docs/2026-07-28/tools/inspector/authorization.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/web.md",
+      "pages/docs/2026-07-28/tools/inspector/cli.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/web.md",
+      "pages/docs/2026-07-28/tools/inspector/configuration.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/web.md",
+      "pages/docs/2026-07-28/tools/inspector/protocol-eras.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tools/inspector/web.md",
+      "pages/docs/2026-07-28/tools/inspector/recipes.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tutorials/security/authorization.md",
+      "pages/docs/2026-07-28/sdk.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tutorials/security/authorization.md",
+      "pages/docs/2026-07-28/tutorials/security/security_best_practices.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tutorials/security/security_best_practices.md",
+      "pages/docs/2025-11-25/tutorials/security/security_best_practices.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tutorials/security/security_best_practices.md",
+      "pages/docs/2026-07-28/tools/inspector.md"
+    ],
+    [
+      "pages/docs/2026-07-28/tutorials/security/security_best_practices.md",
+      "pages/docs/2026-07-28/tutorials/security/authorization.md"
     ]
   ],
   "last_sync": {
-    "synced_at": "2026-07-27T09:52:00.520355+00:00",
-    "added": 0,
+    "synced_at": "2026-08-03T09:44:29.586324+00:00",
+    "added": 24,
     "changed": 0,
-    "removed": 0,
-    "pages": 16
+    "removed": 16,
+    "pages": 24
   }
 }

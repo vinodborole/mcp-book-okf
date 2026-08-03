@@ -3,8 +3,8 @@ type: Web Page
 title: Build an MCP server - Model Context Protocol
 description: Get started building your own server to use in Claude for Desktop and
   other clients.
-resource: https://modelcontextprotocol.io/docs/develop/build-server
-timestamp: '2026-07-09T12:16:39.468634+00:00'
+resource: https://modelcontextprotocol.io/docs/2026-07-28/develop/build-server
+timestamp: '2026-08-03T09:44:29.575770+00:00'
 ---
 
 ### What we’ll be building
@@ -12,11 +12,13 @@ timestamp: '2026-07-09T12:16:39.468634+00:00'
 We’ll build a server that exposes two tools:`get_alerts` and `get_forecast`. Then we’ll connect the server to an MCP host (in this case, Claude for Desktop):
 Servers can connect to any client. We’ve chosen Claude for Desktop here for simplicity, but we also have a guide on 
 
-[building your own client](/docs/develop/build-client).### Core MCP Concepts
+[building your own client](/docs/2026-07-28/develop/build-client).
+### Core MCP Concepts
 
-MCP servers can provide three main types of capabilities:- [Resources](/docs/learn/server-concepts#resources)
-- [Tools](/docs/learn/server-concepts#tools)
-- [Prompts](/docs/learn/server-concepts#prompts)
+MCP servers can provide three main types of capabilities:
+1. **[Resources](/docs/2026-07-28/learn/server-concepts#resources)** : File-like data that can be read by clients (like API responses or file contents)
+2. **[Tools](/docs/2026-07-28/learn/server-concepts#tools)** : Functions that can be called by the LLM (with user approval)
+3. **[Prompts](/docs/2026-07-28/learn/server-concepts#prompts)** : Pre-written templates that help users accomplish specific tasks
 
 - Python
 - TypeScript
@@ -27,35 +29,37 @@ MCP servers can provide three main types of capabilities:- [Resources](/docs/lea
 - Rust
 - Go
 
-Let’s get started with building our weather server! Make sure to restart your terminal afterwards to ensure that the Now let’s dive into building your server.The FastMCP class uses Python type hints and docstrings to automatically generate tool definitions, making it easy to create and maintain MCP tools.Your server is complete! Run First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+Let’s get started with building our weather server! Make sure to restart your terminal afterwards to ensure that the Now let’s dive into building your server.Your server is complete! Run First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
 
-[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-python)### Prerequisite knowledge
+[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-python)
+### Prerequisite knowledge
 
-This quickstart assumes you have familiarity with:- Python
+This quickstart assumes you have familiarity with:
+- Python
 - LLMs like Claude
 
 ### Logging in MCP Servers
 
-When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never write to stdout. Writing to stdout will corrupt the JSON-RPC messages and break your server. The`print()` function writes to stdout by default, but can be used safely with `file=sys.stderr`.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.### Best Practices
+When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never write to stdout. Writing to stdout will corrupt the JSON-RPC messages and break your server. The`print()` function writes to stdout by default, so keep it out of a STDIO server entirely.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.
+### Best Practices
 
-- Use a logging library that writes to stderr or files.
+- Use the standard library `logging` module, which writes to stderr.
+- Create one logger per module with `logging.getLogger(__name__)` and call it from your tools.
 
 ### Quick Examples
 
 ```
-import sys
 import logging
+logger = logging.getLogger(__name__)
 # ❌ Bad (STDIO)
 print("Processing request")
 # ✅ Good (STDIO)
-print("Processing request", file=sys.stderr)
-# ✅ Good (STDIO)
-logging.info("Processing request")
+logger.info("Processing request")  # writes to stderr
 ```
 ### System requirements
 
 - Python 3.10 or higher installed.
-- You must use the Python MCP SDK 1.2.0 or higher.
+- You must use the Python MCP SDK 2.0.0 or higher.
 
 ### Set up your environment
 
@@ -73,7 +77,7 @@ cd weather
 uv venv
 source .venv/bin/activate
 # Install dependencies
-uv add "mcp[cli]" httpx
+uv add "mcp[cli]"
 # Create our server file
 touch weather.py
 ```
@@ -85,7 +89,7 @@ cd weather
 uv venv
 .venv\Scripts\activate
 # Install dependencies
-uv add mcp[cli] httpx
+uv add mcp[cli]
 # Create our server file
 new-item weather.py
 ```
@@ -95,21 +99,22 @@ new-item weather.py
 
 Add these to the top of your`weather.py`:```
 from typing import Any
-import httpx
-from mcp.server.fastmcp import FastMCP
-# Initialize FastMCP server
-mcp = FastMCP("weather")
+import httpx2
+from mcp.server import MCPServer
+# Initialize MCPServer
+mcp = MCPServer("weather")
 # Constants
 NWS_API_BASE = "https://api.weather.gov"
 USER_AGENT = "weather-app/1.0"
 ```
+`httpx2` is the HTTP client the SDK itself depends on, so installing `mcp` already brought it in.The MCPServer class uses Python type hints and docstrings to automatically generate tool definitions, making it easy to create and maintain MCP tools.
 ### Helper functions
 
 Next, let’s add our helper functions for querying and formatting the data from the National Weather Service API:```
 async def make_nws_request(url: str) -> dict[str, Any] | None:
     """Make a request to the NWS API with proper error handling."""
     headers = {"User-Agent": USER_AGENT, "Accept": "application/geo+json"}
-    async with httpx.AsyncClient() as client:
+    async with httpx2.AsyncClient() as client:
         try:
             response = await client.get(url, headers=headers, timeout=30.0)
             response.raise_for_status()
@@ -177,17 +182,15 @@ Forecast: {period["detailedForecast"]}
 ### Running the server
 
 Finally, let’s initialize and run the server:```
-def main():
-    # Initialize and run the server
-    mcp.run(transport="stdio")
 if __name__ == "__main__":
-    main()
+    mcp.run(transport="stdio")
 ```
-`uv run weather.py` to start the MCP server, which will listen for messages from MCP hosts.Let’s now test your server from an existing MCP host, Claude for Desktop.## Testing your server with Claude for Desktop
+`uv run weather.py` to start the MCP server, which will listen for messages from MCP hosts.Let’s now test your server from an existing MCP host, Claude for Desktop.
+## Testing your server with Claude for Desktop
 
 Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
 
-[Building a client](/docs/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -225,23 +228,29 @@ code $env:AppData\Claude\claude_desktop_config.json
 ```
 You may need to put the full path to the 
 
-`uv` executable in the `command` field. You can get this by running `which uv` on macOS/Linux or `where uv` on Windows.Make sure you pass in the absolute path to your server. You can get this by running 
+`uv` executable in the `command` field. You can get this by running `which uv` on macOS/Linux or `where uv` on Windows.
+Make sure you pass in the absolute path to your server. You can get this by running 
 
-`pwd` on macOS/Linux or `cd` on Windows Command Prompt. On Windows, remember to use double backslashes (`\\`) or forward slashes (`/`) in the JSON path.- There’s an MCP server named “weather”
-- To launch it by running `uv --directory /ABSOLUTE/PATH/TO/PARENT/FOLDER/weather run weather.py`
+`pwd` on macOS/Linux or `cd` on Windows Command Prompt. On Windows, remember to use double backslashes (`\\`) or forward slashes (`/`) in the JSON path.
+1. There’s an MCP server named “weather”
+2. To launch it by running `uv --directory /ABSOLUTE/PATH/TO/PARENT/FOLDER/weather run weather.py`
 
-**Claude for Desktop**.Let’s get started with building our weather server! For this tutorial, you’ll need Node.js version 16 or higher.Now, let’s create and set up our project:Update your package.json to add type: “module” and a build script:Create a Now let’s dive into building your server.Make sure to run First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+**Claude for Desktop**.
+Let’s get started with building our weather server! For this tutorial, you’ll need Node.js version 20 or higher.Now, let’s create and set up our project:Update your package.json to add type: “module” and a build script:Create a Now let’s dive into building your server.Make sure to run First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
 
-[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-typescript)### Prerequisite knowledge
+[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-typescript)
+### Prerequisite knowledge
 
-This quickstart assumes you have familiarity with:- TypeScript
+This quickstart assumes you have familiarity with:
+- TypeScript
 - LLMs like Claude
 
 ### Logging in MCP Servers
 
-When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`console.log()`, as it writes to standard output (stdout) by default. Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.### Best Practices
+When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`console.log()`, as it writes to standard output (stdout) by default. Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.
+### Best Practices
 
-- Use `console.error()`which writes to stderr, or use a logging library that writes to stderr or files.
+- Use `console.error()` which writes to stderr, or use a logging library that writes to stderr or files.
 
 ### Quick Examples
 
@@ -253,7 +262,8 @@ console.error("Server started"); // stderr is safe
 ```
 ### System requirements
 
-For TypeScript, make sure you have the latest version of Node installed.### Set up your environment
+For TypeScript, make sure you have the latest version of Node installed.
+### Set up your environment
 
 First, let’s install Node.js and npm if you haven’t already. You can download them from[nodejs.org](https://nodejs.org/). Verify your Node.js installation:```
 node --version
@@ -266,7 +276,7 @@ cd weather
 # Initialize a new npm project
 npm init -y
 # Install dependencies
-npm install @modelcontextprotocol/sdk zod@3
+npm install @modelcontextprotocol/server zod
 npm install -D @types/node typescript
 # Create our files
 mkdir src
@@ -279,7 +289,7 @@ cd weather
 # Initialize a new npm project
 npm init -y
 # Install dependencies
-npm install @modelcontextprotocol/sdk zod@3
+npm install @modelcontextprotocol/server zod
 npm install -D @types/node typescript
 # Create our files
 md src
@@ -299,7 +309,8 @@ package.json
   "files": ["build"]
 }
 ```
-`tsconfig.json` in the root of your project:tsconfig.json
+`tsconfig.json` in the root of your project:
+tsconfig.json
 
 ```
 {
@@ -307,6 +318,7 @@ package.json
     "target": "ES2022",
     "module": "Node16",
     "moduleResolution": "Node16",
+    "types": ["node"],
     "outDir": "./build",
     "rootDir": "./src",
     "strict": true,
@@ -323,8 +335,8 @@ package.json
 ### Importing packages and setting up the instance
 
 Add these to the top of your`src/index.ts`:```
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { McpServer } from "@modelcontextprotocol/server";
+import { StdioServerTransport } from "@modelcontextprotocol/server/stdio";
 import { z } from "zod";
 const NWS_API_BASE = "https://api.weather.gov";
 const USER_AGENT = "weather-app/1.0";
@@ -405,12 +417,12 @@ server.registerTool(
   "get_alerts",
   {
     description: "Get weather alerts for a state",
-    inputSchema: {
+    inputSchema: z.object({
       state: z
         .string()
         .length(2)
         .describe("Two-letter state code (e.g. CA, NY)"),
-    },
+    }),
   },
   async ({ state }) => {
     const stateCode = state.toUpperCase();
@@ -453,7 +465,7 @@ server.registerTool(
   "get_forecast",
   {
     description: "Get weather forecast for a location",
-    inputSchema: {
+    inputSchema: z.object({
       latitude: z
         .number()
         .min(-90)
@@ -464,7 +476,7 @@ server.registerTool(
         .min(-180)
         .max(180)
         .describe("Longitude of the location"),
-    },
+    }),
   },
   async ({ latitude, longitude }) => {
     // Get grid point data
@@ -549,11 +561,12 @@ main().catch((error) => {
   process.exit(1);
 });
 ```
-`npm run build` to build your server! This is a very important step in getting your server to connect.Let’s now test your server from an existing MCP host, Claude for Desktop.## Testing your server with Claude for Desktop
+`npm run build` to build your server! This is a very important step in getting your server to connect.Let’s now test your server from an existing MCP host, Claude for Desktop.
+## Testing your server with Claude for Desktop
 
 Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
 
-[Building a client](/docs/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -579,13 +592,15 @@ code $env:AppData\Claude\claude_desktop_config.json
   }
 }
 ```
-- There’s an MCP server named “weather”
-- Launch it by running `node /ABSOLUTE/PATH/TO/PARENT/FOLDER/weather/build/index.js`
+1. There’s an MCP server named “weather”
+2. Launch it by running `node /ABSOLUTE/PATH/TO/PARENT/FOLDER/weather/build/index.js`
 
-**Claude for Desktop**.This is a quickstart demo based on Spring AI MCP auto-configuration and boot starters.
+**Claude for Desktop**.
+This is a quickstart demo based on Spring AI MCP auto-configuration and boot starters.
 To learn how to create sync and async MCP Servers, manually, consult the 
 
-[Java SDK Server](https://java.sdk.modelcontextprotocol.io/)documentation.[You can find the complete code for what we’ll be building here.](https://github.com/spring-projects/spring-ai-examples/tree/main/model-context-protocol/weather/starter-stdio-server)For more information, see the
+[Java SDK Server](https://java.sdk.modelcontextprotocol.io/)documentation.
+[You can find the complete code for what we’ll be building here.](https://github.com/spring-projects/spring-ai-examples/tree/main/model-context-protocol/weather/starter-stdio-server)For more information, see the
 
 [MCP Server Boot Starter](https://docs.spring.io/spring-ai/reference/api/mcp/mcp-server-boot-starter-docs.html)reference documentation. For manual MCP Server implementation, refer to the
 
@@ -593,9 +608,11 @@ To learn how to create sync and async MCP Servers, manually, consult the
 
 ### Logging in MCP Servers
 
-When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use
+When implementing MCP servers, be careful about how you handle logging:
+**For STDIO-based servers:**Never use
 
-`System.out.println()` or `System.out.print()`, as they write to standard output (stdout). Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.
+`System.out.println()` or `System.out.print()`, as they write to standard output (stdout). Writing to stdout will corrupt the JSON-RPC messages and break your server.
+**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.
 
 ### Best Practices
 
@@ -605,11 +622,12 @@ When implementing MCP servers, be careful about how you handle logging:**For STD
 ### System requirements
 
 - Java 17 or higher installed.
-- [Spring Boot 3.3.x](https://docs.spring.io/spring-boot/installing.html)or higher
+- [Spring Boot 3.3.x](https://docs.spring.io/spring-boot/installing.html) or higher
 
 ### Set up your environment
 
-Use the[Spring Initializer](https://start.spring.io/)to bootstrap the project.You will need to add the following dependencies:
+Use the
+[Spring Initializer](https://start.spring.io/)to bootstrap the project.You will need to add the following dependencies:
 
 ```
 <dependencies>
@@ -647,7 +665,8 @@ spring:
 
 ### Weather Service
 
-Let’s implement a[WeatherService.java](https://github.com/spring-projects/spring-ai-examples/blob/main/model-context-protocol/weather/starter-stdio-server/src/main/java/org/springframework/ai/mcp/sample/server/WeatherService.java)that uses a REST client to query the data from the National Weather Service API:
+Let’s implement a
+[WeatherService.java](https://github.com/spring-projects/spring-ai-examples/blob/main/model-context-protocol/weather/starter-stdio-server/src/main/java/org/springframework/ai/mcp/sample/server/WeatherService.java)that uses a REST client to query the data from the National Weather Service API:
 
 ```
 @Service
@@ -685,7 +704,8 @@ public class WeatherService {
 }
 ```
 `@Service` annotation will auto-register the service in your application context.
-The Spring AI `@Tool` annotation makes it easy to create and maintain MCP tools.The auto-configuration will automatically register these tools with the MCP server.### Create your Boot Application
+The Spring AI `@Tool` annotation makes it easy to create and maintain MCP tools.The auto-configuration will automatically register these tools with the MCP server.
+### Create your Boot Application
 
 ```
 @SpringBootApplication
@@ -699,12 +719,14 @@ public class McpServerApplication {
 	}
 }
 ```
-`MethodToolCallbackProvider` utils to convert the `@Tools` into actionable callbacks used by the MCP server.### Running the server
+`MethodToolCallbackProvider` utils to convert the `@Tools` into actionable callbacks used by the MCP server.
+### Running the server
 
 Finally, let’s build the server:```
 ./mvnw clean install
 ```
-`mcp-weather-stdio-server-0.0.1-SNAPSHOT.jar` file within the `target` folder.Let’s now test your server from an existing MCP host, Claude for Desktop.## Testing your server with Claude for Desktop
+`mcp-weather-stdio-server-0.0.1-SNAPSHOT.jar` file within the `target` folder.Let’s now test your server from an existing MCP host, Claude for Desktop.
+## Testing your server with Claude for Desktop
 
 Claude for Desktop is not yet available on Linux.
 
@@ -752,8 +774,8 @@ The MCP UI elements will only show up in Claude for Desktop if at least one serv
 ```
 Make sure you pass in the absolute path to your server.
 
-- There’s an MCP server named “my-weather-server”
-- To launch it by running `java -jar /ABSOLUTE/PATH/TO/PARENT/FOLDER/mcp-weather-stdio-server-0.0.1-SNAPSHOT.jar`
+1. There’s an MCP server named “my-weather-server”
+2. To launch it by running `java -jar /ABSOLUTE/PATH/TO/PARENT/FOLDER/mcp-weather-stdio-server-0.0.1-SNAPSHOT.jar`
 
 **Claude for Desktop**.
 
@@ -792,18 +814,24 @@ spring.ai.mcp.client.stdio.servers-configuration=file:PATH/TO/claude_desktop_con
 
 ## More Java MCP Server examples
 
-The[starter-webflux-server](https://github.com/spring-projects/spring-ai-examples/tree/main/model-context-protocol/weather/starter-webflux-server)demonstrates how to create an MCP server using SSE transport. It showcases how to define and register MCP Tools, Resources, and Prompts, using the Spring Boot’s auto-configuration capabilities.
+The
+[starter-webflux-server](https://github.com/spring-projects/spring-ai-examples/tree/main/model-context-protocol/weather/starter-webflux-server)demonstrates how to create an HTTP-based MCP server with the WebFlux starter. Set the
 
+`spring.ai.mcp.server.protocol=STREAMABLE` property to serve it over Streamable HTTP.
+It showcases how to define and register MCP Tools, Resources, and Prompts, using the Spring Boot’s auto-configuration capabilities.
 Let’s get started with building our weather server! Now, let’s create and set up your project:After running Verify that everything is set up correctly:Now let’s dive into building your server.You can run the server directly during development:For production use, build the shadow JAR:Let’s now test your server from an existing MCP host, Claude for Desktop.First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
 
-[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/kotlin-sdk/tree/main/samples/weather-stdio-server)### Prerequisite knowledge
+[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/kotlin-sdk/tree/main/samples/weather-stdio-server)
+### Prerequisite knowledge
 
-This quickstart assumes you have familiarity with:- Kotlin
+This quickstart assumes you have familiarity with:
+- Kotlin
 - LLMs like Claude
 
 ### Logging in MCP Servers
 
-When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`println()`, as it writes to standard output (stdout) by default. Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.### Best Practices
+When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`println()`, as it writes to standard output (stdout) by default. Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.
+### Best Practices
 
 - Use a logging library that writes to stderr or files.
 
@@ -831,7 +859,8 @@ cd weather
 # Initialize a new kotlin project
 gradle init
 ```
-`gradle init`, select **Application**as the project type,**Kotlin**as the programming language.Alternatively, you can create a Kotlin application using the[IntelliJ IDEA project wizard](https://kotlinlang.org/docs/jvm-get-started.html).After creating the project, replace the contents of your`build.gradle.kts` with:build.gradle.kts
+`gradle init`, select **Application**as the project type,**Kotlin**as the programming language.Alternatively, you can create a Kotlin application using the[IntelliJ IDEA project wizard](https://kotlinlang.org/docs/jvm-get-started.html).After creating the project, replace the contents of your`build.gradle.kts` with:
+build.gradle.kts
 
 ```
 // Check latest versions at https://github.com/modelcontextprotocol/kotlin-sdk/releases
@@ -1029,7 +1058,7 @@ java -jar build/libs/weather-0.1.0-all.jar
 
 Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
 
-[Building a client](/docs/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor.
+[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor.
 Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
@@ -1063,38 +1092,35 @@ The MCP UI elements will only show up in Claude for Desktop if at least one serv
   }
 }
 ```
-- There’s an MCP server named “weather”
-- Launch it by running `java -jar /ABSOLUTE/PATH/TO/PARENT/FOLDER/weather/build/libs/weather-0.1.0-all.jar`
+1. There’s an MCP server named “weather”
+2. Launch it by running `java -jar /ABSOLUTE/PATH/TO/PARENT/FOLDER/weather/build/libs/weather-0.1.0-all.jar`
 
-**Claude for Desktop**.Let’s get started with building our weather server! Now, let’s create and set up your project:After running Now let’s dive into building your server.This code sets up a basic console application that uses the Model Context Protocol SDK to create an MCP server with standard I/O transport.Next, define a class with the tool execution handlers for querying and converting responses from the National Weather Service API:This will start the server and listen for incoming requests on standard input/output.First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+**Claude for Desktop**.
+Let’s get started with building our weather server! Now, let’s create and set up your project:After running Now let’s dive into building your server.This code sets up a basic console application that uses the Model Context Protocol SDK to create an MCP server with standard I/O transport.Next, define a class with the tool execution handlers for querying and converting responses from the National Weather Service API:This will start the server and listen for incoming requests on standard input/output.First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
 
-[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/csharp-sdk/tree/main/samples/QuickstartWeatherServer)### Prerequisite knowledge
+[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/csharp-sdk/tree/main/samples/QuickstartWeatherServer)
+### Prerequisite knowledge
 
-This quickstart assumes you have familiarity with:- C#
+This quickstart assumes you have familiarity with:
+- C#
 - LLMs like Claude
 - .NET 8 or higher
 
 ### Logging in MCP Servers
 
-When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`Console.WriteLine()` or `Console.Write()`, as they write to standard output (stdout). Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.### Best Practices
+When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`Console.WriteLine()` or `Console.Write()`, as they write to standard output (stdout). Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.
+### Best Practices
 
 - Use a logging library that writes to stderr or files.
 
 ### System requirements
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)or higher installed.
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) or higher installed.
 
 ### Set up your environment
 
 First, let’s install`dotnet` if you haven’t already. You can download `dotnet` from [official Microsoft .NET website](https://dotnet.microsoft.com/download/). Verify your`dotnet` installation:```
 dotnet --version
-```
-```
-# Create a new directory for our project
-mkdir weather
-cd weather
-# Initialize a new C# project
-dotnet new console
 ```
 ```
 # Create a new directory for our project
@@ -1132,7 +1158,8 @@ await app.RunAsync();
 ```
 When creating the 
 
-`ApplicationHostBuilder`, ensure you use `CreateEmptyApplicationBuilder` instead of `CreateDefaultBuilder`. This ensures that the server does not write any additional messages to the console. This is only necessary for servers using STDIO transport.### Weather API helper functions
+`ApplicationHostBuilder`, ensure you use `CreateEmptyApplicationBuilder` instead of `CreateDefaultBuilder`. This ensures that the server does not write any additional messages to the console. This is only necessary for servers using STDIO transport.
+### Weather API helper functions
 
 Create an extension class for`HttpClient` which helps simplify JSON request handling:```
 using System.Text.Json;
@@ -1209,7 +1236,7 @@ dotnet run
 
 Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
 
-[Building a client](/docs/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.
+[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.
 For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
@@ -1242,19 +1269,22 @@ In this case, we’ll add our single weather server like so:```
   }
 }
 ```
-- There’s an MCP server named “weather”
-- Launch it by running `dotnet run /ABSOLUTE/PATH/TO/PROJECT`Save the file, and restart**Claude for Desktop**.
+1. There’s an MCP server named “weather”
+2. Launch it by running `dotnet run /ABSOLUTE/PATH/TO/PROJECT` Save the file, and restart**Claude for Desktop** .
 
 Let’s get started with building our weather server! Now, let’s create and set up our project:Now let’s dive into building your server.The Your server is complete! Run First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
 
-[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-ruby)### Prerequisite knowledge
+[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-ruby)
+### Prerequisite knowledge
 
-This quickstart assumes you have familiarity with:- Ruby
+This quickstart assumes you have familiarity with:
+- Ruby
 - LLMs like Claude
 
 ### Logging in MCP Servers
 
-When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`puts` or `print`, as they write to standard output (stdout) by default. Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.### Best Practices
+When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`puts` or `print`, as they write to standard output (stdout) by default. Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.
+### Best Practices
 
 - Use a logging library that writes to stderr or files.
 
@@ -1311,7 +1341,8 @@ require "uri"
 NWS_API_BASE = "https://api.weather.gov"
 USER_AGENT = "weather-app/1.0"
 ```
-`mcp` gem provides the Model Context Protocol SDK for Ruby, with classes for server implementation and stdio transport.### Helper methods
+`mcp` gem provides the Model Context Protocol SDK for Ruby, with classes for server implementation and stdio transport.
+### Helper methods
 
 Next, let’s add helper methods for querying and formatting data from the National Weather Service API:```
 module HelperMethods
@@ -1422,11 +1453,12 @@ server = MCP::Server.new(
 transport = MCP::Server::Transports::StdioTransport.new(server)
 transport.open
 ```
-`bundle exec ruby weather.rb` to start the MCP server, which will listen for messages from MCP hosts.Let’s now test your server from an existing MCP host, Claude for Desktop.## Testing your server with Claude for Desktop
+`bundle exec ruby weather.rb` to start the MCP server, which will listen for messages from MCP hosts.Let’s now test your server from an existing MCP host, Claude for Desktop.
+## Testing your server with Claude for Desktop
 
 Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
 
-[Building a client](/docs/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -1456,22 +1488,27 @@ code $env:AppData\Claude\claude_desktop_config.json
 ```
 Make sure you pass in the absolute path to your project directory in the 
 
-`cwd` field. You can get this by running `pwd` on macOS/Linux or `cd` on Windows Command Prompt from your project directory. On Windows, remember to use double backslashes (`\\`) or forward slashes (`/`) in the JSON path.- There’s an MCP server named “weather”
-- Launch it by running `bundle exec ruby weather.rb`in the specified directory
+`cwd` field. You can get this by running `pwd` on macOS/Linux or `cd` on Windows Command Prompt from your project directory. On Windows, remember to use double backslashes (`\\`) or forward slashes (`/`) in the JSON path.
+1. There’s an MCP server named “weather”
+2. Launch it by running `bundle exec ruby weather.rb` in the specified directory
 
-**Claude for Desktop**.Let’s get started with building our weather server! Verify your Rust installation:Now, let’s create and set up our project:Update your Now let’s dive into building your server.The Now define the request types that MCP clients will send:The Build your server with:The compiled binary will be in First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+**Claude for Desktop**.
+Let’s get started with building our weather server! Verify your Rust installation:Now, let’s create and set up our project:Update your Now let’s dive into building your server.The Now define the request types that MCP clients will send:The Build your server with:The compiled binary will be in First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
 
-[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-rust)### Prerequisite knowledge
+[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-rust)
+### Prerequisite knowledge
 
-This quickstart assumes you have familiarity with:- Rust programming language
+This quickstart assumes you have familiarity with:
+- Rust programming language
 - Async/await in Rust
 - LLMs like Claude
 
 ### Logging in MCP Servers
 
-When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`println!()` or `print!()`, as they write to standard output (stdout). Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.### Best Practices
+When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`println!()` or `print!()`, as they write to standard output (stdout). Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.
+### Best Practices
 
-- Use a logging library that writes to stderr or files, such as `tracing`or`log`in Rust.
+- Use a logging library that writes to stderr or files, such as `tracing` or`log` in Rust.
 - Configure your logging framework to avoid stdout output.
 
 ### Quick Examples
@@ -1504,12 +1541,8 @@ cargo --version
 cargo new weather
 cd weather
 ```
-```
-# Create a new Rust project
-cargo new weather
-cd weather
-```
-`Cargo.toml` to add the required dependencies:Cargo.toml
+`Cargo.toml` to add the required dependencies:
+Cargo.toml
 
 ```
 [package]
@@ -1543,7 +1576,8 @@ use serde::de::DeserializeOwned;
 const NWS_API_BASE: &str = "https://api.weather.gov";
 const USER_AGENT: &str = "weather-app/1.0";
 ```
-`rmcp` crate provides the Model Context Protocol SDK for Rust, with features for server implementation, procedural macros, and stdio transport.### Data structures
+`rmcp` crate provides the Model Context Protocol SDK for Rust, with features for server implementation, procedural macros, and stdio transport.
+### Data structures
 
 Next, let’s define the data structures for deserializing responses from the National Weather Service API:```
 #[derive(Debug, Deserialize)]
@@ -1712,7 +1746,8 @@ impl Weather {
     }
 }
 ```
-`#[tool_router]` macro automatically generates the routing logic, and the `#[tool]` attribute marks methods as MCP tools.### Implementing the ServerHandler
+`#[tool_router]` macro automatically generates the routing logic, and the `#[tool]` attribute marks methods as MCP tools.
+### Implementing the ServerHandler
 
 Implement the`ServerHandler` trait to define server capabilities:```
 #[tool_handler]
@@ -1739,11 +1774,12 @@ async fn main() -> Result<()> {
 ```
 cargo build --release
 ```
-`target/release/weather`.Let’s now test your server from an existing MCP host, Claude for Desktop.## Testing your server with Claude for Desktop
+`target/release/weather`.Let’s now test your server from an existing MCP host, Claude for Desktop.
+## Testing your server with Claude for Desktop
 
 Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
 
-[Building a client](/docs/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -1769,22 +1805,27 @@ code $env:AppData\Claude\claude_desktop_config.json
 ```
 Make sure you pass in the absolute path to your compiled binary. You can get this by running 
 
-`pwd` on macOS/Linux or `cd` on Windows Command Prompt from your project directory. On Windows, remember to use double backslashes (`\\`) or forward slashes (`/`) in the JSON path, and add the `.exe` extension.- There’s an MCP server named “weather”
-- Launch it by running the compiled binary at the specified path
+`pwd` on macOS/Linux or `cd` on Windows Command Prompt from your project directory. On Windows, remember to use double backslashes (`\\`) or forward slashes (`/`) in the JSON path, and add the `.exe` extension.
+1. There’s an MCP server named “weather”
+2. Launch it by running the compiled binary at the specified path
 
-**Claude for Desktop**.Let’s get started with building our weather server! Now, let’s create and set up our project:Now let’s dive into building your server.Build your server with:The compiled binary will be in First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+**Claude for Desktop**.
+Let’s get started with building our weather server! Now, let’s create and set up our project:Now let’s dive into building your server.Build your server with:The compiled binary will be in First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
 
-[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-go)### Prerequisite knowledge
+[You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-go)
+### Prerequisite knowledge
 
-This quickstart assumes you have familiarity with:- Go
+This quickstart assumes you have familiarity with:
+- Go
 - LLMs like Claude
 
 ### Logging in MCP Servers
 
-When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`fmt.Println()` or `fmt.Printf()`, as they write to standard output (stdout). Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.### Best Practices
+When implementing MCP servers, be careful about how you handle logging:**For STDIO-based servers:**Never use`fmt.Println()` or `fmt.Printf()`, as they write to standard output (stdout). Writing to stdout will corrupt the JSON-RPC messages and break your server.**For HTTP-based servers:**Standard output logging is fine since it doesn’t interfere with HTTP responses.
+### Best Practices
 
-- Use `log.Println()`(which defaults to stderr) or a logging library that writes to stderr or files.
-- Use `fmt.Fprintf(os.Stderr, ...)`to write to stderr explicitly.
+- Use `log.Println()` (which defaults to stderr) or a logging library that writes to stderr or files.
+- Use `fmt.Fprintf(os.Stderr, ...)` to write to stderr explicitly.
 
 ### Quick Examples
 
@@ -2059,11 +2100,12 @@ func main() {
 ```
 go build -o weather .
 ```
-`./weather`.Let’s now test your server from an existing MCP host, Claude for Desktop.## Testing your server with Claude for Desktop
+`./weather`.Let’s now test your server from an existing MCP host, Claude for Desktop.
+## Testing your server with Claude for Desktop
 
 Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
 
-[Building a client](/docs/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -2089,10 +2131,12 @@ code $env:AppData\Claude\claude_desktop_config.json
 ```
 Make sure you pass in the absolute path to your compiled binary. You can get this by running 
 
-`pwd` on macOS/Linux or `cd` on Windows Command Prompt from your project directory. On Windows, remember to use double backslashes (`\\`) or forward slashes (`/`) in the JSON path, and add the `.exe` extension.- There’s an MCP server named “weather”
-- Launch it by running the compiled binary at the specified path
+`pwd` on macOS/Linux or `cd` on Windows Command Prompt from your project directory. On Windows, remember to use double backslashes (`\\`) or forward slashes (`/`) in the JSON path, and add the `.exe` extension.
+1. There’s an MCP server named “weather”
+2. Launch it by running the compiled binary at the specified path
 
-**Claude for Desktop**.### Test with commands
+**Claude for Desktop**.
+### Test with commands
 
 Let’s make sure Claude for Desktop is picking up the two tools we’ve exposed in our`weather` server. You can do this by looking for the “Add files, connectors, and more /”  icon:
 `weather` servers listed:
@@ -2105,23 +2149,25 @@ Since this is the US National Weather service, the queries will only work for US
 
 ## What’s happening under the hood
 
-When you ask a question:- The client sends your question to Claude
-- Claude analyzes the available tools and decides which one(s) to use
-- The client executes the chosen tool(s) through the MCP server
-- The results are sent back to Claude
-- Claude formulates a natural language response
-- The response is displayed to you!
+When you ask a question:
+1. The client sends your question to Claude
+2. Claude analyzes the available tools and decides which one(s) to use
+3. The client executes the chosen tool(s) through the MCP server
+4. The results are sent back to Claude
+5. Claude formulates a natural language response
+6. The response is displayed to you!
 
 ## Troubleshooting
 
-Claude for Desktop Integration Issues
+## Claude for Desktop Integration Issues
 
 Claude for Desktop Integration Issues
 
 **Getting logs from Claude for Desktop**Claude.app logging related to MCP is written to log files in
 
-`~/Library/Logs/Claude`:- `mcp.log`will contain general logging about MCP connections and connection failures.
-- Files named `mcp-server-SERVERNAME.log`will contain error (stderr) logging from the named server.
+`~/Library/Logs/Claude`:
+- `mcp.log` will contain general logging about MCP connections and connection failures.
+- Files named `mcp-server-SERVERNAME.log` will contain the stderr output from the named server. Stdio servers may use stderr for all their logging, so these files are not limited to errors.
 
 ```
 # Check Claude's logs for errors
@@ -2129,34 +2175,34 @@ tail -n 20 -f ~/Library/Logs/Claude/mcp*.log
 ```
 **Server not showing up in Claude**
 
-- Check your `claude_desktop_config.json`file syntax
-- Make sure the path to your project is absolute and not relative
-- Restart Claude for Desktop completely
+1. Check your `claude_desktop_config.json` file syntax
+2. Make sure the path to your project is absolute and not relative
+3. Restart Claude for Desktop completely
 
 To properly restart Claude for Desktop, you must fully quit the application:
 
-- **Windows**: Right-click the Claude icon in the system tray (which may be hidden in the “hidden icons” menu) and select “Quit” or “Exit”.
-- **macOS**: Use Cmd+Q or select “Quit Claude” from the menu bar.
+- **Windows** : Right-click the Claude icon in the system tray (which may be hidden in the “hidden icons” menu) and select “Quit” or “Exit”.
+- **macOS** : Use Cmd+Q or select “Quit Claude” from the menu bar.
 
 **Tool calls failing silently**If Claude attempts to use the tools but they fail:
 
-- Check Claude’s logs for errors
-- Verify your server builds and runs without errors
-- Try restarting Claude for Desktop
+1. Check Claude’s logs for errors
+2. Verify your server builds and runs without errors
+3. Try restarting Claude for Desktop
 
 **None of this is working. What do I do?**Please refer to our
 
-[debugging guide](/docs/tools/debugging)for better debugging tools and more detailed guidance.
+[debugging guide](/docs/2026-07-28/tools/debugging)for better debugging tools and more detailed guidance.
 
-Weather API Issues
+## Weather API Issues
 
 Weather API Issues
 
 **Error: Failed to retrieve grid point data**This usually means either:
 
-- The coordinates are outside the US
-- The NWS API is having issues
-- You’re being rate limited
+1. The coordinates are outside the US
+2. The NWS API is having issues
+3. You’re being rate limited
 
 - Verify you’re using US coordinates
 - Add a small delay between requests
@@ -2166,7 +2212,8 @@ Weather API Issues
 
 For more advanced troubleshooting, check out our guide on 
 
-[Debugging MCP](/docs/tools/debugging)## Next steps
+[Debugging MCP](/docs/2026-07-28/tools/debugging)
+## Next steps
 
 ## Building a client
 
@@ -2186,4 +2233,4 @@ Use agent skills to guide AI coding assistants through server design
 
 # Citations
 
-1. Source page: https://modelcontextprotocol.io/docs/develop/build-server
+1. Source page: https://modelcontextprotocol.io/docs/2026-07-28/develop/build-server

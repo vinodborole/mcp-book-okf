@@ -1,8 +1,8 @@
 ---
 type: Web Page
 title: What is the Model Context Protocol (MCP)? - Model Context Protocol
-resource: https://modelcontextprotocol.io/docs/getting-started/intro
-timestamp: '2026-07-09T12:16:39.468634+00:00'
+resource: https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro
+timestamp: '2026-08-03T09:44:29.575770+00:00'
 ---
 
 ## What can MCP enable?
@@ -14,13 +14,15 @@ timestamp: '2026-07-09T12:16:39.468634+00:00'
 
 ## Why does MCP matter?
 
-Depending on where you sit in the ecosystem, MCP can have a range of benefits.- **Developers**: MCP reduces development time and complexity when building, or integrating with, an AI application or agent.
-- **AI applications or agents**: MCP provides access to an ecosystem of data sources, tools and apps which will enhance capabilities and improve the end-user experience.
-- **End-users**: MCP results in more capable AI applications or agents which can access your data and take actions on your behalf when necessary.
+Depending on where you sit in the ecosystem, MCP can have a range of benefits.
+- **Developers** : MCP reduces development time and complexity when building, or integrating with, an AI application or agent.
+- **AI applications or agents** : MCP provides access to an ecosystem of data sources, tools and apps which will enhance capabilities and improve the end-user experience.
+- **End-users** : MCP results in more capable AI applications or agents which can access your data and take actions on your behalf when necessary.
 
 ## Broad ecosystem support
 
-MCP is an open protocol supported across a wide range of clients and servers. AI assistants like[Claude](https://claude.com/docs/connectors/building)and
+MCP is an open protocol supported across a wide range of clients and servers. AI assistants like
+[Claude](https://claude.com/docs/connectors/building)and
 
 [ChatGPT](https://developers.openai.com/api/docs/mcp/), development tools like
 
@@ -52,4 +54,4 @@ Learn the core concepts and architecture of MCP
 
 # Citations
 
-1. Source page: https://modelcontextprotocol.io/docs/getting-started/intro
+1. Source page: https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro
