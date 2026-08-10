@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-  "updated_at": "2026-08-03T09:44:29.596619+00:00",
+  "updated_at": "2026-08-10T07:40:53.976946+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -163,16 +163,8 @@
       "pages/docs/2026-07-28/develop/build-server.md"
     ],
     [
-      "pages/docs/2026-07-28/develop/build-client.md",
-      "pages/docs/2026-07-28/develop/clients/client-best-practices.md"
-    ],
-    [
       "pages/docs/2026-07-28/develop/build-server.md",
       "pages/docs/2026-07-28/develop/build-client.md"
-    ],
-    [
-      "pages/docs/2026-07-28/develop/build-server.md",
-      "pages/docs/2026-07-28/develop/build-with-agent-skills.md"
     ],
     [
       "pages/docs/2026-07-28/develop/build-server.md",
@@ -183,56 +175,16 @@
       "pages/docs/2026-07-28/tools/debugging.md"
     ],
     [
-      "pages/docs/2026-07-28/develop/build-with-agent-skills.md",
-      "pages/docs/2026-07-28/develop/build-server.md"
-    ],
-    [
-      "pages/docs/2026-07-28/develop/build-with-agent-skills.md",
-      "pages/docs/2026-07-28/develop/connect-remote-servers.md"
-    ],
-    [
-      "pages/docs/2026-07-28/develop/clients/client-best-practices.md",
-      "pages/docs/2026-07-28/develop/build-client.md"
-    ],
-    [
       "pages/docs/2026-07-28/develop/clients/client-best-practices.md",
       "pages/docs/2026-07-28/develop/build-with-agent-skills.md"
-    ],
-    [
-      "pages/docs/2026-07-28/develop/clients/client-best-practices.md",
-      "pages/docs/2026-07-28/sdk.md"
-    ],
-    [
-      "pages/docs/2026-07-28/develop/connect-local-servers.md",
-      "pages/docs/2026-07-28/develop/connect-remote-servers.md"
-    ],
-    [
-      "pages/docs/2026-07-28/develop/connect-local-servers.md",
-      "pages/docs/2026-07-28/learn/versioning.md"
     ],
     [
       "pages/docs/2026-07-28/develop/connect-local-servers.md",
       "pages/docs/2026-07-28/tools/debugging.md"
     ],
     [
-      "pages/docs/2026-07-28/develop/connect-remote-servers.md",
-      "pages/docs/2026-07-28/develop/build-with-agent-skills.md"
-    ],
-    [
-      "pages/docs/2026-07-28/develop/connect-remote-servers.md",
-      "pages/docs/2026-07-28/develop/connect-local-servers.md"
-    ],
-    [
-      "pages/docs/2026-07-28/getting-started/intro.md",
-      "pages/docs/2026-07-28/learn/architecture.md"
-    ],
-    [
       "pages/docs/2026-07-28/learn/architecture.md",
       "pages/docs/2026-07-28/develop/clients/client-best-practices.md"
-    ],
-    [
-      "pages/docs/2026-07-28/learn/architecture.md",
-      "pages/docs/2026-07-28/getting-started/intro.md"
     ],
     [
       "pages/docs/2026-07-28/learn/architecture.md",
@@ -245,38 +197,6 @@
     [
       "pages/docs/2026-07-28/learn/architecture.md",
       "pages/docs/2026-07-28/sdk.md"
-    ],
-    [
-      "pages/docs/2026-07-28/learn/client-concepts.md",
-      "pages/docs/2026-07-28/learn/server-concepts.md"
-    ],
-    [
-      "pages/docs/2026-07-28/learn/client-concepts.md",
-      "pages/docs/2026-07-28/learn/versioning.md"
-    ],
-    [
-      "pages/docs/2026-07-28/learn/server-concepts.md",
-      "pages/docs/2026-07-28/learn/architecture.md"
-    ],
-    [
-      "pages/docs/2026-07-28/learn/server-concepts.md",
-      "pages/docs/2026-07-28/learn/client-concepts.md"
-    ],
-    [
-      "pages/docs/2026-07-28/learn/versioning.md",
-      "pages/docs/2026-07-28/develop/connect-local-servers.md"
-    ],
-    [
-      "pages/docs/2026-07-28/learn/versioning.md",
-      "pages/docs/2026-07-28/learn/client-concepts.md"
-    ],
-    [
-      "pages/docs/2026-07-28/sdk.md",
-      "pages/docs/2026-07-28/develop/clients/client-best-practices.md"
-    ],
-    [
-      "pages/docs/2026-07-28/sdk.md",
-      "pages/docs/2026-07-28/tutorials/security/authorization.md"
     ],
     [
       "pages/docs/2026-07-28/tools/debugging.md",
@@ -289,10 +209,6 @@
     [
       "pages/docs/2026-07-28/tools/debugging.md",
       "pages/docs/2026-07-28/tools/inspector.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tools/debugging.md",
-      "pages/docs/2026-07-28/tools/inspector/recipes.md"
     ],
     [
       "pages/docs/2026-07-28/tools/debugging.md",
@@ -323,16 +239,8 @@
       "pages/docs/2026-07-28/tools/inspector/web.md"
     ],
     [
-      "pages/docs/2026-07-28/tools/inspector.md",
-      "pages/docs/2026-07-28/tutorials/security/security_best_practices.md"
-    ],
-    [
       "pages/docs/2026-07-28/tools/inspector/authorization.md",
       "pages/docs/2026-07-28/tools/inspector/configuration.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tools/inspector/authorization.md",
-      "pages/docs/2026-07-28/tools/inspector/protocol-eras.md"
     ],
     [
       "pages/docs/2026-07-28/tools/inspector/authorization.md",
@@ -349,18 +257,6 @@
     [
       "pages/docs/2026-07-28/tools/inspector/cli.md",
       "pages/docs/2026-07-28/tools/inspector/protocol-eras.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tools/inspector/cli.md",
-      "pages/docs/2026-07-28/tools/inspector/tui.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tools/inspector/cli.md",
-      "pages/docs/2026-07-28/tools/inspector/web.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tools/inspector/configuration.md",
-      "pages/docs/2026-07-28/tools/inspector/authorization.md"
     ],
     [
       "pages/docs/2026-07-28/tools/inspector/configuration.md",
@@ -376,23 +272,7 @@
     ],
     [
       "pages/docs/2026-07-28/tools/inspector/configuration.md",
-      "pages/docs/2026-07-28/tools/inspector/tui.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tools/inspector/configuration.md",
       "pages/docs/2026-07-28/tools/inspector/web.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tools/inspector/protocol-eras.md",
-      "pages/docs/2026-07-28/tools/inspector/authorization.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tools/inspector/protocol-eras.md",
-      "pages/docs/2026-07-28/tools/inspector/recipes.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tools/inspector/recipes.md",
-      "pages/docs/2026-07-28/tools/debugging.md"
     ],
     [
       "pages/docs/2026-07-28/tools/inspector/recipes.md",
@@ -428,15 +308,7 @@
     ],
     [
       "pages/docs/2026-07-28/tools/inspector/web.md",
-      "pages/docs/2026-07-28/tools/inspector.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tools/inspector/web.md",
       "pages/docs/2026-07-28/tools/inspector/authorization.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tools/inspector/web.md",
-      "pages/docs/2026-07-28/tools/inspector/cli.md"
     ],
     [
       "pages/docs/2026-07-28/tools/inspector/web.md",
@@ -453,29 +325,17 @@
     [
       "pages/docs/2026-07-28/tutorials/security/authorization.md",
       "pages/docs/2026-07-28/sdk.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tutorials/security/authorization.md",
-      "pages/docs/2026-07-28/tutorials/security/security_best_practices.md"
     ],
     [
       "pages/docs/2026-07-28/tutorials/security/security_best_practices.md",
       "pages/docs/2025-11-25/tutorials/security/security_best_practices.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tutorials/security/security_best_practices.md",
-      "pages/docs/2026-07-28/tools/inspector.md"
-    ],
-    [
-      "pages/docs/2026-07-28/tutorials/security/security_best_practices.md",
-      "pages/docs/2026-07-28/tutorials/security/authorization.md"
     ]
   ],
   "last_sync": {
-    "synced_at": "2026-08-03T09:44:29.586324+00:00",
-    "added": 24,
+    "synced_at": "2026-08-10T07:40:53.962250+00:00",
+    "added": 0,
     "changed": 0,
-    "removed": 16,
+    "removed": 0,
     "pages": 24
   }
 }
