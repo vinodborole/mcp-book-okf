@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-  "updated_at": "2026-08-10T07:40:53.976946+00:00",
+  "updated_at": "2026-08-17T06:54:22.943719+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -28,7 +28,7 @@
       "path": "pages/docs/2026-07-28/develop/build-server.md",
       "url": "https://modelcontextprotocol.io/docs/2026-07-28/develop/build-server",
       "title": "Build an MCP server - Model Context Protocol",
-      "hash": "883d35cb29fd77910bb734a4e6421026ac6e2e35d5923e008ac48e8798531b98"
+      "hash": "3fbc71bc41c3b89b8112bb2ab2041dc9a4813f0564b781ec9df67310116e118f"
     },
     {
       "path": "pages/docs/2026-07-28/develop/build-with-agent-skills.md",
@@ -332,9 +332,9 @@
     ]
   ],
   "last_sync": {
-    "synced_at": "2026-08-10T07:40:53.962250+00:00",
+    "synced_at": "2026-08-17T06:54:22.931441+00:00",
     "added": 0,
-    "changed": 0,
+    "changed": 1,
     "removed": 0,
     "pages": 24
   }

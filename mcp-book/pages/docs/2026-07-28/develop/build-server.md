@@ -4,7 +4,7 @@ title: Build an MCP server - Model Context Protocol
 description: Get started building your own server to use in Claude for Desktop and
   other clients.
 resource: https://modelcontextprotocol.io/docs/2026-07-28/develop/build-server
-timestamp: '2026-08-03T09:44:29.575770+00:00'
+timestamp: '2026-08-17T06:54:22.928510+00:00'
 ---
 
 ### What we’ll be building
@@ -29,7 +29,7 @@ MCP servers can provide three main types of capabilities:
 - Rust
 - Go
 
-Let’s get started with building our weather server! Make sure to restart your terminal afterwards to ensure that the Now let’s dive into building your server.Your server is complete! Run First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+Let’s get started with building our weather server! Make sure to restart your terminal afterwards to ensure that the Now let’s dive into building your server.Your server is complete! Run You’ll then add your servers in the This tells Claude for Desktop:
 
 [You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-python)
 ### Prerequisite knowledge
@@ -188,9 +188,10 @@ if __name__ == "__main__":
 `uv run weather.py` to start the MCP server, which will listen for messages from MCP hosts.Let’s now test your server from an existing MCP host, Claude for Desktop.
 ## Testing your server with Claude for Desktop
 
-Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
-
-[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+First, make sure you have Claude for Desktop installed.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+code ~/.config/Claude/claude_desktop_config.json
+```
+```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -236,7 +237,7 @@ Make sure you pass in the absolute path to your server. You can get this by runn
 2. To launch it by running `uv --directory /ABSOLUTE/PATH/TO/PARENT/FOLDER/weather run weather.py`
 
 **Claude for Desktop**.
-Let’s get started with building our weather server! For this tutorial, you’ll need Node.js version 20 or higher.Now, let’s create and set up our project:Update your package.json to add type: “module” and a build script:Create a Now let’s dive into building your server.Make sure to run First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+Let’s get started with building our weather server! For this tutorial, you’ll need Node.js version 20 or higher.Now, let’s create and set up our project:Update your package.json to add type: “module” and a build script:Create a Now let’s dive into building your server.Make sure to run You’ll then add your servers in the This tells Claude for Desktop:
 
 [You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-typescript)
 ### Prerequisite knowledge
@@ -564,9 +565,10 @@ main().catch((error) => {
 `npm run build` to build your server! This is a very important step in getting your server to connect.Let’s now test your server from an existing MCP host, Claude for Desktop.
 ## Testing your server with Claude for Desktop
 
-Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
-
-[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+First, make sure you have Claude for Desktop installed.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+code ~/.config/Claude/claude_desktop_config.json
+```
+```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -728,8 +730,7 @@ Finally, let’s build the server:```
 `mcp-weather-stdio-server-0.0.1-SNAPSHOT.jar` file within the `target` folder.Let’s now test your server from an existing MCP host, Claude for Desktop.
 ## Testing your server with Claude for Desktop
 
-Claude for Desktop is not yet available on Linux.
-
+First, make sure you have Claude for Desktop installed.
 [You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,
 
 **make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at
@@ -737,6 +738,9 @@ Claude for Desktop is not yet available on Linux.
 `~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor.
 Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:
 
+```
+code ~/.config/Claude/claude_desktop_config.json
+```
 ```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
@@ -819,7 +823,7 @@ The
 
 `spring.ai.mcp.server.protocol=STREAMABLE` property to serve it over Streamable HTTP.
 It showcases how to define and register MCP Tools, Resources, and Prompts, using the Spring Boot’s auto-configuration capabilities.
-Let’s get started with building our weather server! Now, let’s create and set up your project:After running Verify that everything is set up correctly:Now let’s dive into building your server.You can run the server directly during development:For production use, build the shadow JAR:Let’s now test your server from an existing MCP host, Claude for Desktop.First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+Let’s get started with building our weather server! Now, let’s create and set up your project:After running Verify that everything is set up correctly:Now let’s dive into building your server.You can run the server directly during development:For production use, build the shadow JAR:Let’s now test your server from an existing MCP host, Claude for Desktop.You’ll then add your servers in the This tells Claude for Desktop:
 
 [You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/kotlin-sdk/tree/main/samples/weather-stdio-server)
 ### Prerequisite knowledge
@@ -1056,10 +1060,11 @@ java -jar build/libs/weather-0.1.0-all.jar
 ```
 ## Testing your server with Claude for Desktop
 
-Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
-
-[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor.
+First, make sure you have Claude for Desktop installed.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor.
 Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+code ~/.config/Claude/claude_desktop_config.json
+```
+```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -1096,7 +1101,7 @@ The MCP UI elements will only show up in Claude for Desktop if at least one serv
 2. Launch it by running `java -jar /ABSOLUTE/PATH/TO/PARENT/FOLDER/weather/build/libs/weather-0.1.0-all.jar`
 
 **Claude for Desktop**.
-Let’s get started with building our weather server! Now, let’s create and set up your project:After running Now let’s dive into building your server.This code sets up a basic console application that uses the Model Context Protocol SDK to create an MCP server with standard I/O transport.Next, define a class with the tool execution handlers for querying and converting responses from the National Weather Service API:This will start the server and listen for incoming requests on standard input/output.First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+Let’s get started with building our weather server! Now, let’s create and set up your project:After running Now let’s dive into building your server.This code sets up a basic console application that uses the Model Context Protocol SDK to create an MCP server with standard I/O transport.Next, define a class with the tool execution handlers for querying and converting responses from the National Weather Service API:This will start the server and listen for incoming requests on standard input/output.You’ll then add your servers in the This tells Claude for Desktop:
 
 [You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/csharp-sdk/tree/main/samples/QuickstartWeatherServer)
 ### Prerequisite knowledge
@@ -1234,10 +1239,11 @@ dotnet run
 ```
 ## Testing your server with Claude for Desktop
 
-Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
-
-[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.
+First, make sure you have Claude for Desktop installed.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.
 For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+code ~/.config/Claude/claude_desktop_config.json
+```
+```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -1272,7 +1278,7 @@ In this case, we’ll add our single weather server like so:```
 1. There’s an MCP server named “weather”
 2. Launch it by running `dotnet run /ABSOLUTE/PATH/TO/PROJECT` Save the file, and restart**Claude for Desktop** .
 
-Let’s get started with building our weather server! Now, let’s create and set up our project:Now let’s dive into building your server.The Your server is complete! Run First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+Let’s get started with building our weather server! Now, let’s create and set up our project:Now let’s dive into building your server.The Your server is complete! Run You’ll then add your servers in the This tells Claude for Desktop:
 
 [You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-ruby)
 ### Prerequisite knowledge
@@ -1456,9 +1462,10 @@ transport.open
 `bundle exec ruby weather.rb` to start the MCP server, which will listen for messages from MCP hosts.Let’s now test your server from an existing MCP host, Claude for Desktop.
 ## Testing your server with Claude for Desktop
 
-Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
-
-[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+First, make sure you have Claude for Desktop installed.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+code ~/.config/Claude/claude_desktop_config.json
+```
+```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -1493,7 +1500,7 @@ Make sure you pass in the absolute path to your project directory in the
 2. Launch it by running `bundle exec ruby weather.rb` in the specified directory
 
 **Claude for Desktop**.
-Let’s get started with building our weather server! Verify your Rust installation:Now, let’s create and set up our project:Update your Now let’s dive into building your server.The Now define the request types that MCP clients will send:The Build your server with:The compiled binary will be in First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+Let’s get started with building our weather server! Verify your Rust installation:Now, let’s create and set up our project:Update your Now let’s dive into building your server.The Now define the request types that MCP clients will send:The Build your server with:The compiled binary will be in You’ll then add your servers in the This tells Claude for Desktop:
 
 [You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-rust)
 ### Prerequisite knowledge
@@ -1777,9 +1784,10 @@ cargo build --release
 `target/release/weather`.Let’s now test your server from an existing MCP host, Claude for Desktop.
 ## Testing your server with Claude for Desktop
 
-Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
-
-[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+First, make sure you have Claude for Desktop installed.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+code ~/.config/Claude/claude_desktop_config.json
+```
+```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -1810,7 +1818,7 @@ Make sure you pass in the absolute path to your compiled binary. You can get thi
 2. Launch it by running the compiled binary at the specified path
 
 **Claude for Desktop**.
-Let’s get started with building our weather server! Now, let’s create and set up our project:Now let’s dive into building your server.Build your server with:The compiled binary will be in First, make sure you have Claude for Desktop installed. You’ll then add your servers in the This tells Claude for Desktop:
+Let’s get started with building our weather server! Now, let’s create and set up our project:Now let’s dive into building your server.Build your server with:The compiled binary will be in You’ll then add your servers in the This tells Claude for Desktop:
 
 [You can find the complete code for what we’ll be building here.](https://github.com/modelcontextprotocol/quickstart-resources/tree/main/weather-server-go)
 ### Prerequisite knowledge
@@ -2103,9 +2111,10 @@ go build -o weather .
 `./weather`.Let’s now test your server from an existing MCP host, Claude for Desktop.
 ## Testing your server with Claude for Desktop
 
-Claude for Desktop is not yet available on Linux. Linux users can proceed to the 
-
-[Building a client](/docs/2026-07-28/develop/build-client)tutorial to build an MCP client that connects to the server we just built.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+First, make sure you have Claude for Desktop installed.[You can install the latest version here.](https://claude.ai/download)If you already have Claude for Desktop,**make sure it’s updated to the latest version.**We’ll need to configure Claude for Desktop for whichever MCP servers you want to use. To do this, open your Claude for Desktop App configuration at`~/Library/Application Support/Claude/claude_desktop_config.json` in a text editor. Make sure to create the file if it doesn’t exist.For example, if you have [VS Code](https://code.visualstudio.com/)installed:```
+code ~/.config/Claude/claude_desktop_config.json
+```
+```
 code ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 ```
@@ -2165,13 +2174,21 @@ Claude for Desktop Integration Issues
 
 **Getting logs from Claude for Desktop**Claude.app logging related to MCP is written to log files in
 
-`~/Library/Logs/Claude`:
+`~/Library/Logs/Claude` (macOS) or `~/.config/Claude/logs/` (Linux):
 - `mcp.log` will contain general logging about MCP connections and connection failures.
 - Files named `mcp-server-SERVERNAME.log` will contain the stderr output from the named server. Stdio servers may use stderr for all their logging, so these files are not limited to errors.
+
+macOS
 
 ```
 # Check Claude's logs for errors
 tail -n 20 -f ~/Library/Logs/Claude/mcp*.log
+```
+Linux
+
+```
+# Check Claude's logs for errors
+tail -n 20 -f ~/.config/Claude/logs/mcp*.log
 ```
 **Server not showing up in Claude**
 
@@ -2183,6 +2200,7 @@ To properly restart Claude for Desktop, you must fully quit the application:
 
 - **Windows** : Right-click the Claude icon in the system tray (which may be hidden in the “hidden icons” menu) and select “Quit” or “Exit”.
 - **macOS** : Use Cmd+Q or select “Quit Claude” from the menu bar.
+- **Linux** : Right-click the Claude icon in the system tray and select “Quit”, or run`pkill -f claude-desktop` from a terminal.
 
 **Tool calls failing silently**If Claude attempts to use the tools but they fail:
 
