@@ -2,7 +2,7 @@
 type: Web Page
 title: What is the Model Context Protocol (MCP)? - Model Context Protocol
 resource: https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro
-timestamp: '2026-08-03T09:44:29.575770+00:00'
+timestamp: '2026-08-24T06:57:31.139671+00:00'
 ---
 
 ## What can MCP enable?
@@ -16,8 +16,8 @@ timestamp: '2026-08-03T09:44:29.575770+00:00'
 
 Depending on where you sit in the ecosystem, MCP can have a range of benefits.
 - **Developers** : MCP reduces development time and complexity when building, or integrating with, an AI application or agent.
-- **AI applications or agents** : MCP provides access to an ecosystem of data sources, tools and apps which will enhance capabilities and improve the end-user experience.
-- **End-users** : MCP results in more capable AI applications or agents which can access your data and take actions on your behalf when necessary.
+- **AI applications or agents** : MCP gives them access to an ecosystem of data sources, tools and apps, which enhances their capabilities and improves the end-user experience.
+- **End-users** : MCP results in more capable AI applications or agents that can access user data and take actions on the user’s behalf when necessary.
 
 ## Broad ecosystem support
 
