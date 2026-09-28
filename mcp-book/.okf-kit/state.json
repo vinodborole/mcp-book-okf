@@ -2,7 +2,7 @@
   "generator": "okf-kit",
   "okf_version": "0.1",
   "root_url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-  "updated_at": "2026-09-21T12:08:36.433457+00:00",
+  "updated_at": "2026-09-28T13:03:45.598210+00:00",
   "config": {
     "max_depth": 3,
     "max_pages": 90,
@@ -58,7 +58,7 @@
       "path": "pages/docs/2026-07-28/getting-started/intro.md",
       "url": "https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro",
       "title": "What is the Model Context Protocol (MCP)? - Model Context Protocol",
-      "hash": "05fd14f1d963c4e103a03a5f23570ea543f9f4638d0d20ce8dd1a9ce1d6d3863"
+      "hash": "610067f8453c1d7f17440d9826c85eb491971deed3f8890f26b1e98053cef383"
     },
     {
       "path": "pages/docs/2026-07-28/learn/architecture.md",
@@ -332,9 +332,9 @@
     ]
   ],
   "last_sync": {
-    "synced_at": "2026-09-21T12:08:36.418978+00:00",
+    "synced_at": "2026-09-28T13:03:45.584153+00:00",
     "added": 0,
-    "changed": 0,
+    "changed": 1,
     "removed": 0,
     "pages": 24
   }

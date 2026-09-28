@@ -2,7 +2,7 @@
 type: Web Page
 title: What is the Model Context Protocol (MCP)? - Model Context Protocol
 resource: https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro
-timestamp: '2026-08-24T06:57:31.139671+00:00'
+timestamp: '2026-09-28T13:03:45.581676+00:00'
 ---
 
 ## What can MCP enable?
@@ -48,9 +48,19 @@ Build interactive apps that run inside AI clients
 
 ## Learn more
 
-## Understand concepts
+## Architecture
 
 Learn the core concepts and architecture of MCP
+
+## Security
+
+Understand the security considerations and best practices for MCP
+
+## Community
+
+## Contributing
+
+Learn how to get involved and contribute to MCP
 
 # Citations
 
